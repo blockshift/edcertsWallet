@@ -1,0 +1,50 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="brown-700" pattern="pattern-1" class="at-ph-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>Colors</span>
+            <span fxFlex></span>
+            <a href="https://material.io/guidelines/style/typography.html" target="_blank"
+               md-icon-button
+               md-tooltip="Colors Specs">
+                <md-icon>launch</md-icon>
+            </a>
+        </h1>
+        <h4 class="at-mb-5 at-tw-400 mat-fg-white">The color palette</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-10" ngClass.gt-sm="at-pv-40 at-ph-80">
+        <div fxLayout="row" fxLayoutWrap>
+            <div *ngFor="let color of matColors" fxFlex fxFlex.gt-md="33" class="at-p-10">
+                <div fxLayout="column"
+                     class="mat-bg-{{color.name.toLowerCase().replace(' ', '-')}} mat-fg-white at-p-20">
+                    <h3>{{color.name}}</h3>
+                    <div fxLayout="row">
+                        <label>500</label>
+                        <span fxFlex></span>
+                        <div fxLayout="column">
+                            <label>.mat-bg-{{color.name.toLowerCase().replace(' ', '-')}}</label>
+                            <label>.mat-fg-{{color.name.toLowerCase().replace(' ', '-')}}</label>
+                        </div>
+
+                    </div>
+                </div>
+                <md-list>
+                    <md-list-item *ngFor="let hue of color.hueArr; let i = index"
+                                  class="mat-bg-{{color.name.toLowerCase().replace(' ', '-')}}-{{hue}} at-p-10"
+                                  [class.mat-fg-white]="color.hoverArr[i] == 'white'"
+                                  [class.mat-fg-grey-800]="color.hoverArr[i] == 'black'">
+                        <p md-line fxLayout="row">
+                            <label>{{hue}}</label>
+                            <span fxFlex></span>
+                            <label>.mat-bg-{{color.name.toLowerCase().replace(' ', '-')}}-{{hue}} |
+                                .mat-fg-{{color.name.toLowerCase().replace(' ', '-')}}-{{hue}}</label>
+                        </p>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </div>
+    </div>
+</at-layout>

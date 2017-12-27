@@ -1,0 +1,21 @@
+
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="blue-grey-800" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>Simple Layout </span>
+            </h1>
+            <h4 class="at-mb-5 mat-fg-white">Scroll on content, full width</h4>
+        </div>
+    </div>
+
+    <div at-layout-content>
+        <div ngClass="at-p-10" ngClass.gt-sm="at-p-40">
+            <app-layout-content></app-layout-content>
+        </div>
+    </div>
+
+</at-layout>

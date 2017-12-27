@@ -1,0 +1,207 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtMedia</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Responsive service & directive (for attributes).</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <p>Use AtMedia when you need to toggle classes or attributes based on media queries.</p>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtMedia Service Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <md-grid-list [cols]="isNotSmallScreen ? 4 : 1" rowHeight="200px" [gutterSize]="10">
+                        <md-grid-tile *ngFor="let media of mediaDemo"
+                                      [class]="media.value? 'mat-bg-green-500' : 'mat-bg-red-400'">
+                            <h1 class="at-pb-60 mat-fg-white">{{media.query}}</h1>
+                            <md-grid-tile-footer>
+                                <h3 md-line>Matches</h3>
+                                <span md-line>{{media.value}}</span>
+                                <md-icon>{{media.value ? 'done' : 'clear'}}</md-icon>
+                            </md-grid-tile-footer>
+                        </md-grid-tile>
+                    </md-grid-list>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtMedia Directive Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                    <div fxFlex >
+                        <md-card atMediaToggle="lg"
+                                 class="at-m-10"
+                                 [mediaAttributes]="{title: 'Red on gt-md'}"
+                                 [mediaStyles]="{color: 'red'}">
+                            <h1>I'm red on large screens</h1>
+                        </md-card>
+                    </div>
+                    <div fxFlex>
+                        <md-card atMediaToggle="sm"
+                                 class="at-m-10"
+                                 [mediaAttributes]="{title: 'tooltip'}"
+                                 [mediaStyles]="{color: 'green'}">
+                            <h1>I'm green on small screens</h1>
+                        </md-card>
+                    </div>
+                    <div fxFlex>
+                        <md-card atMediaToggle="md"
+                                 class="at-m-10"
+                                 [mediaAttributes]="{hidden: true}">
+                            <h1>I'm hidden on medium screens</h1>
+                        </md-card>
+                    </div>
+
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use atMediaToggle service</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtMediaToggleModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtMediaToggleModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtMediaToggleModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <p>The most common usage of the service is to make a function to check the screen or make a method to watch the screen and subscribe to the media service to get the changes.</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript" >
+                                <![CDATA[
+                                import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
+                                import { AtMediaService } from '@aviator/core';
+                                import { Subscription } from 'rxjs/Subscription';
+                                ...
+                                })
+                                export class MyComponent implements OnInit, OnDestroy {
+
+                                isSmallScreen: boolean = false;
+                                private _querySubscription: Subscription;
+
+                                constructor(private _mediaService: AtMediaService, private _ngZone: NgZone) {
+                                }
+
+                                checkScreen(): void {
+                                    this._ngZone.run(() => {
+                                        //'(min-width: 960px) and (max-width: 1279px)'
+                                        this.isSmallScreen = this._mediaService.query('sm');
+                                    });
+                                }
+
+                                watchScreen(): void {
+                                    this._querySubscription =
+                                    this._mediaService.registerQuery('sm').subscribe((matches: boolean) => {
+                                        this._ngZone.run(() => {
+                                            this.isSmallScreen = matches;
+                                        });
+                                    });
+                                }
+
+                                ngOnInit(): void {
+                                    this.watchScreen();
+                                }
+
+                                ngOnDestroy(): void {
+                                    this._querySubscription.unsubscribe();
+                                }
+                                }
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div fxLayout="column">
+                    <h2>How to use atMediaToggle directive</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtMediaToggleModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtMediaToggleModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtMediaToggleModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+
+
+                    <h3>Usage</h3>
+                    <p>Just add the directive wherever you want into your html:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mycomponent.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <div atMediaToggle="sm"
+                                     [mediaClasses]="['classOne', 'classTwo']"
+                                     [mediaAttributes]="{title: 'tooltip'}"
+                                     [mediaStyles]="{color: 'red'}">
+                                    ...
+                                </div>
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

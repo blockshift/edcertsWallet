@@ -1,0 +1,139 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtDialog</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">A Quick way to use alert, confirm and prompt dialogs.</h4>
+    </div>
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtDialog Service Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="center center">
+                    <div class="at-p-10" fxLayout="column" fxLayoutAlign="center center">
+                        <img src="assets/demo/img/dialogs/alert.png" [style.width]="'100%'">
+                        <button class="at-mt-20" md-button color="primary" (click)="openAlert()">{{'Open Alert' |uppercase}}</button>
+                    </div>
+                    <div class="at-p-10" fxLayout="column" fxLayoutAlign="center center">
+                        <img src="assets/demo/img/dialogs/confirm.png" [style.width]="'100%'">
+                        <button class="at-mt-20" md-button color="primary" (click)="openConfirm()">{{'Open confirm' |uppercase}}</button>
+                    </div>
+                    <div class="at-p-10" fxLayout="column" fxLayoutAlign="center center">
+                        <img src="assets/demo/img/dialogs/promt.png" [style.width]="'100%'">
+                        <button class="at-mt-20" md-button color="primary" (click)="openPrompt()">{{'Open promt' |uppercase}}</button>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use AtDialog service</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtDialogModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtDialogModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtDialogModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { ViewContainerRef } from '@angular/core';
+                                import { AtDialogService } from '@aviator/core';
+                                ...
+
+                                export class Demo {
+                                    constructor(private _dialogService: AtDialogService,
+                                                private _viewContainerRef: ViewContainerRef) {
+                                    ...
+                                    }
+
+                                    openAlert(): void {
+                                        this._dialogService.openAlert({
+                                            message: 'This is how simple it is to create an alert with this wrapper service.',
+                                            disableClose: true,
+                                            viewContainerRef: this._viewContainerRef,
+                                            title: 'Alert',
+                                            closeButton: 'Close',
+                                        });
+                                    }
+
+                                    openConfirm(): void {
+                                        this._dialogService.openConfirm({
+                                                message: 'This is how simple it is to create a confirm with this wrapper service. Do you agree?',
+                                                disableClose: false,
+                                                viewContainerRef: this._viewContainerRef,
+                                                title: 'Confirm',
+                                                cancelButton: 'Disagree',
+                                                acceptButton: 'Agree',
+                                            }).afterClosed().subscribe((accept: boolean) => {
+                                                if (accept) {
+                                                    // DO SOMETHING
+                                                } else {
+                                                    // DO SOMETHING ELSE
+                                                }
+                                        });
+                                    }
+
+                                    openPrompt(): void {
+                                        this._dialogService.openPrompt({
+                                            message: 'This is how simple it is to create a prompt with this wrapper service. Prompt something.',
+                                            disableClose: true,
+                                            viewContainerRef: this._viewContainerRef,
+                                            title: 'Prompt',
+                                            value: 'Prepopulated value',
+                                            cancelButton: 'Cancel',
+                                            acceptButton: 'Ok',
+                                        }).afterClosed().subscribe((newValue: string) => {
+                                            if (newValue) {
+                                                // DO SOMETHING
+                                            } else {
+                                                // DO SOMETHING ELSE
+                                            }
+                                        });
+                                    }
+                                }
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

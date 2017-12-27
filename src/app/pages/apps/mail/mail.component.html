@@ -1,0 +1,206 @@
+<at-layout #layoutCarded
+           [layoutType]="'carded'"
+           scrollOn="content">
+
+    <div at-layout-header color="light-blue-700" pattern="pattern-4">
+        <div ngClass="at-ph-40 at-mt-40" ngClass.gt-sm="at-pr-40 at-mt-40">
+            <md-card class="card-widget at-no-p" fxLayoutAlign="center center">
+                <button md-icon-button class="at-ml-20"
+                        atMediaToggle="gt-sm"
+                        [mediaAttributes]="{hidden:true}"
+                        (click)="layoutCarded.toggleSideBarLeft()">
+                    <md-icon>menu</md-icon>
+                </button>
+                <at-search-box ngClass="at-pl-10" ngClass.gt-sm="at-pl-20" placeholder="Search for an email here"
+                               [alwaysVisible]="true" fxFlex></at-search-box>
+            </md-card>
+        </div>
+    </div>
+
+    <div at-layout-sidebar-left [width]="'240px'" class="at-hp-100" [showAtScrollbar]="false">
+        <div class="at-hp-100 at-oh" fxLayout="column">
+            <div fxFlex="200px" class="at-p-20" fxLayout="column">
+                <h3 atMediaToggle="gt-sm" [mediaClasses]="['mat-fg-white']" class="at-mt-40">Mailbox</h3>
+                <div fxFlex></div>
+                <md-select>
+                    <md-option>email1@gmail.com</md-option>
+                    <md-option>email2@gmail.com</md-option>
+                </md-select>
+            </div>
+            <at-scrollbar>
+                <div class="at-ph-10">
+                    <md-nav-list>
+                        <md-list-item>
+                            <md-icon class="mat-fg-light-blue" md-list-icon>inbox</md-icon>
+                            <h4 md-line>Inbox</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-orange" md-list-icon>access_time</md-icon>
+                            <h4 md-line>Snoozed</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-green" md-list-icon>done</md-icon>
+                            <h4 md-line>Done</h4>
+                        </md-list-item>
+
+                        <md-divider class="at-mv-10"></md-divider>
+
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>drafts</md-icon>
+                            <h4 md-line>Drafts</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>send</md-icon>
+                            <h4 md-line>Sent</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>alarm</md-icon>
+                            <h4 md-line>Remainders</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>delete</md-icon>
+                            <h4 md-line>Trash</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>warning</md-icon>
+                            <h4 md-line>Spam</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>contacts</md-icon>
+                            <h4 md-line>Contacts</h4>
+                        </md-list-item>
+
+                        <md-divider class="at-mv-10"></md-divider>
+
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>add</md-icon>
+                            <h4 md-line>Create new...</h4>
+                        </md-list-item>
+
+                        <md-divider class="at-mv-10"></md-divider>
+
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>settings</md-icon>
+                            <h4 md-line>Settings</h4>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-icon class="mat-fg-grey-600" md-list-icon>help</md-icon>
+                            <h4 md-line>Help & Feedback</h4>
+                        </md-list-item>
+                    </md-nav-list>
+                </div>
+
+            </at-scrollbar>
+        </div>
+    </div>
+
+    <div at-layout-content [showAtScrollbar]="false" fxLayout="column" class="at-hp-100">
+        <md-toolbar class="at-toolbar at-toolbar-transparent">
+            <div fxFlex></div>
+            <at-paging-bar #simplePagingBar
+                           [pageSize]="100"
+                           [total]="1345">
+                <small>{{simplePagingBar.range}} <span hide-xs>of {{simplePagingBar.total}}</span></small>
+
+            </at-paging-bar>
+        </md-toolbar>
+        <md-divider></md-divider>
+        <md-sidenav-container fxFlex>
+            <md-sidenav #sidenavMails mode="side" opened="true" class="at-br" ngClass="at-wp-100"
+                        ngClass.gt-md="at-wp-50">
+                <at-scrollbar class="at-hp-100 at-oh">
+                    <div class="at-ph-10">
+                        <md-nav-list>
+                            <ng-template let-item let-i="index" let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
+                                <a md-list-item>
+                                    <img md-list-avatar src="http://lorempixel.com/40/40/people/{{i}}"/>
+                                    <h3 md-line>Firstname Lastname </h3>
+                                    <p md-line> Email Subject </p>
+                                    <small md-line class="mat-fg-grey"> Email Description</small>
+                                    <label>16:40</label>
+                                </a>
+                                <md-divider *ngIf="!last" md-inset></md-divider>
+                            </ng-template>
+                        </md-nav-list>
+                    </div>
+                </at-scrollbar>
+            </md-sidenav>
+            <!--<button md-mini-fab class="example-fab" (click)="sidenavMails.toggle()">-->
+            <!--<md-icon>add</md-icon>-->
+            <!--</button>-->
+            <md-card class="at-hp-100 at-no-m" fxLayout="column">
+                <md-card-header>
+                    <img md-card-avatar src="http://lorempixel.com/40/40/people/9"/>
+                    <md-card-title>Firstname Lastname</md-card-title>
+                    <md-card-subtitle>Tuesday, January 3 2017 at 8:39 PM</md-card-subtitle>
+                    <span fxFlex></span>
+                    <div class="pad-top pad-right">
+                        <button md-icon-button>
+                            <md-icon>reply</md-icon>
+                        </button>
+                        <button md-icon-button>
+                            <md-icon>forward</md-icon>
+                        </button>
+                        <button md-icon-button>
+                            <md-icon>more_vert</md-icon>
+                        </button>
+                    </div>
+                </md-card-header>
+                <md-divider></md-divider>
+                <div fxFlex class="at-oa at-pv-10">
+                    <at-scrollbar fxFlexFill>
+                        <p>
+                            Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative
+                            approaches to corporate strategy foster collaborative thinking to further the overall value
+                            proposition. Organically grow the holistic world view of disruptive innovation via workplace
+                            diversity and empowerment.
+                        </p>
+                        <p>
+                            Bring to the table win-win survival strategies to ensure proactive domination. At the end of
+                            the day, going forward, a new normal that has evolved from generation X is on the runway
+                            heading towards a streamlined cloud solution. User generated content in real-time will have
+                            multiple touchpoints for offshoring.
+                        </p>
+                        <p>
+                            Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+                            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+                            immersion along the information highway will close the loop on focusing solely on the bottom
+                            line.
+                        </p>
+                        <p>
+                            Podcasting operational change management inside of workflows to establish a framework.
+                            Taking seamless key performance indicators offline to maximise the long tail. Keeping your
+                            eye on the ball while performing a deep dive on the start-up mentality to derive convergence
+                            on cross-platform integration.
+                        </p>
+                        <p>
+                            Sincerly<br>-Kimmie
+                        </p>
+                        <p>
+                            Sincerly<br>-Kimmie
+                        </p>
+                        <p>
+                            Sincerly<br>-Kimmie
+                        </p>
+                    </at-scrollbar>
+                </div>
+                <md-divider class="at-mb-10"></md-divider>
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+                    <button md-button>
+                        <md-icon>reply</md-icon>
+                        <div class="md-caption">Reply</div>
+                    </button>
+                    <button md-button>
+                        <md-icon class="pull-bottom">reply_all</md-icon>
+                        <div class="md-caption">Reply All</div>
+                    </button>
+                    <button md-button>
+                        <md-icon class="pull-bottom">forward</md-icon>
+                        <div class="md-caption">Forward</div>
+                    </button>
+                </div>
+            </md-card>
+        </md-sidenav-container>
+    </div>
+
+</at-layout>

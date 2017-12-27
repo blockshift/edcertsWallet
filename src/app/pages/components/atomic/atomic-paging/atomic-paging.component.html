@@ -1,0 +1,169 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtPaging</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Paging for lists and tables.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+        <h2>Example</h2>
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtPaging basic example</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20">
+                <at-paging-bar fxFlex #simplePagingBar
+                               [pageLinkCount]="5"
+                               [pageSize]="100"
+                               [total]="1345"
+                               (change)="change($event)">
+                    {{simplePagingBar.range}} <span hide-xs>of {{simplePagingBar.total}}</span>
+                </at-paging-bar>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtPaging with material select</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                <at-paging-bar fxFlex #selectPagingBar
+                               [pageSize]="pageSize"
+                               [total]="1345"
+                               (change)="change($event)">
+                    <span hide-xs>Rows per page:</span>
+                    <md-select [style.width.px]="50" [(ngModel)]="pageSize">
+                        <md-option *ngFor="let size of [50,100,200,500,100]" [value]="size">
+                            {{size}}
+                        </md-option>
+                    </md-select>
+                    {{selectPagingBar.range}} <span hide-xs>of {{selectPagingBar.total}}</span>
+                </at-paging-bar>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtPaging with with material input</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                <at-paging-bar fxFlex #inputPagingBar
+                               [pageSize]="100"
+                               [total]="1345"
+                               (change)="change($event)">
+                    <p hide-xs>Go to:</p>
+                    <md-input-container>
+                        <input #goToInput
+                               mdInput
+                               type="number"
+                               [min]="1"
+                               [max]="inputPagingBar.maxPage"
+                               [value]="inputPagingBar.page"
+                               (blur)="goToInput.value = inputPagingBar.page"
+                               (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = inputPagingBar.page"/>
+                    </md-input-container>
+                    {{inputPagingBar.range}} <span hide-xs>of {{inputPagingBar.total}}</span>
+
+                </at-paging-bar>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtPaging with dynamic page sizes, input and page links</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                <at-paging-bar fxFlex #pagingBar
+                               [firstLast]="true"
+                               [pageLinkCount]="5"
+                               [pageSize]="pageSize"
+                               [total]="1345"
+                               (change)="change($event)">
+                    <span hide-xs>Rows per page:</span>
+                    <md-select [style.width.px]="50" [(ngModel)]="pageSize">
+                        <md-option *ngFor="let size of [50,100,200,500,100]" [value]="size">
+                            {{size}}
+                        </md-option>
+                    </md-select>
+                    <p hide-xs>Go to:</p>
+                    <md-input-container>
+                        <input #goToInput
+                               mdInput
+                               type="number"
+                               [min]="1"
+                               [max]="pagingBar.maxPage"
+                               [value]="pagingBar.page"
+                               (blur)="goToInput.value = pagingBar.page"
+                               (keyup.enter)="pagingBar.navigateToPage(goToInput.value); goToInput.value = pagingBar.page"/>
+                    </md-input-container>
+                    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                </at-paging-bar>
+            </md-card-content>
+        </md-card>
+
+        <div id="doc" class="at-mt-20">
+            <div>
+                <h2>How to use AtPaging component</h2>
+
+                <h3>Setup</h3>
+                <p>Import the <code>[AtPagingModule]</code> in your NgModule:</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="typescript">
+                            <![CDATA[
+                            import { AtPagingModule } from '@aviator/core';
+
+                            @NgModule({
+                                imports: [
+                                    AtPagingModule ,
+                                    ...
+                                ],
+                                ...
+                            })
+                            export class MyModule {}
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+
+                <h3>Usage</h3>
+                <p>
+                    Use <code>< at-paging-bar ></code> element to generate a paging bar.
+                </p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <at-paging-bar #pagingBar
+                                           [pageLinkCount]="5"
+                                           [pageSize]="100"
+                                           [total]="1345"
+                                           (change)="change($event)">
+                                {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                            </at-paging-bar>
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</at-layout>

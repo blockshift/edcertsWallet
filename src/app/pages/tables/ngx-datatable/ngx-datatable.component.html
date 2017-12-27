@@ -1,0 +1,51 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="grey-700" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>Ngx DataTable</span>
+                <span fxFlex></span>
+                <a href="http://swimlane.github.io/ngx-datatable/" target="_blank"
+                   md-icon-button
+                   md-tooltip="Documentation & Demos">
+                    <md-icon>launch</md-icon>
+                </a>
+            </h1>
+            <h4 class="at-mb-5 at-tw-500 mat-fg-white">An Angular component for presenting large and complex data.</h4>
+        </div>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <md-card class="at-p-0">
+                <md-toolbar color="primary" class="at-bb">
+                    <h4>Nutrition Facts</h4>
+                    <span fxFlex></span>
+                    <at-search-box #searchBox
+                                   backIcon="arrow_back"
+                                   class="push-right-sm"
+                                   placeholder="Search here"
+                                   (searchDebounce)="search($event)" fxFlex>
+                    </at-search-box>
+                    <button md-icon-button>
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                </md-toolbar>
+                <md-card-content fxLayout="column">
+                    <ngx-datatable
+                            #table
+                            class="material"
+                            [rows]="data"
+                            [columns]="columns"
+                            [columnMode]="'force'"
+                            [headerHeight]="50"
+                            [footerHeight]="50"
+                            [rowHeight]="'auto'"
+                            [limit]="10">
+                    </ngx-datatable>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</at-layout>

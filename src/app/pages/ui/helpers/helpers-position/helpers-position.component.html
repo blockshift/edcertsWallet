@@ -1,0 +1,260 @@
+<at-scrollbar class="at-hp-100">
+    <div ngClass="at-p-5" ngClass.gt-sm="at-p-40">
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>Padding Helpers</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="column">
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-no-padding<br>.at-no-p</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set padding="0" style to an element.</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-no-padding"></div>
+                            <div class="at-no-p"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-padding-[5x]<br>.at-p-[5x]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set padding="[5x]px" style to an element. Were x goes
+                        from 0 to 20</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-padding-0"></div>
+                            <div class="at-p-5"></div>
+                            <div class="at-padding-10"></div>
+                            ...
+                            <div class="at-p-100"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-padding-[8x]<br>.at-p-[8x]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set padding="[8x]px" style to an element. Were x goes
+                        from 1 to 12</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-padding-8"></div>
+                            <div class="at-p-16"></div>
+                            <div class="at-padding-24"></div>
+                            ...
+                            <div class="at-p-96"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <!--Padding Direction 5x-->
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h4 fxFlex.gt-xs="20" class="at-p-20 at-tw-600">
+                        <code>.at-padding-[direction]-[5x]<br>.at-p[dir]-[5x]</code>
+                    </h4>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set <code>padding-[direction]="[5x]px"</code> style to an element.
+                        Were x goes
+                        from 0 to 20.<br>
+                        <code>direction = top | left | right | bottom | horizontal | vertical</code><br>
+                        <code>dir = t | l | r | b | h | v</code></p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-padding-top-0"></div>
+                            <div class="at-pt-10"></div>
+                            <div class="at-padding-left-15"></div>
+                            <div class="at-pl-20"></div>
+                            <div class="at-padding-right-25"></div>
+                            <div class="at-pr-30"></div>
+                            <div class="at-padding-bottom-35"></div>
+                            <div class="at-pb-40"></div>
+                            <div class="at-padding-horizontal-45"></div>
+                            <div class="at-ph-50"></div>
+                            <div class="at-padding-vertical-55"></div>
+                            ...
+                            <div class="at-pv-100"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+                <!--/Padding Direction 5x-->
+
+                <!--Padding Direction 8x-->
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h4 fxFlex.gt-xs="20" class="at-p-20 at-tw-600">
+                        <code>.at-padding-[direction]-[8x]<br>.at-p[dir]-[8x]</code>
+                    </h4>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set <code>padding-[direction]="[8x]px"</code>
+                        style to an element. Were x goes from 1 to 12.<br>
+                        <code>direction = top | left | right | bottom | horizontal | vertical</code><br>
+                        <code>dir = t | l | r | b | h | v</code></p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-padding-top-8"></div>
+                            <div class="at-pt-16"></div>
+                            <div class="at-padding-left-24"></div>
+                            <div class="at-pl-32"></div>
+                            <div class="at-padding-right-40"></div>
+                            <div class="at-pr-48"></div>
+                            <div class="at-padding-bottom-56"></div>
+                            <div class="at-pb-64"></div>
+                            <div class="at-padding-horizontal-72"></div>
+                            <div class="at-ph-80"></div>
+                            <div class="at-padding-vertical-88"></div>
+                            ...
+                            <div class="at-pv-96"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <!--/Padding Direction 8x-->
+
+            </md-card-content>
+        </md-card>
+        <br><br>
+
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>Margin Helpers</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="column">
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-no-margin<br>.at-no-m</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set margin="0" style to an element.</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-no-margin"></div>
+                            <div class="at-no-m"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-margin-[5x]<br>.at-m-[5x]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set margin="[5x]px" style to an element. Were x goes
+                        from 0 to 20</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-margin-0"></div>
+                            <div class="at-m-5"></div>
+                            <div class="at-margin-10"></div>
+                            ...
+                            <div class="at-m-100"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-margin-[8x]<br>.at-m-[8x]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set margin="[8x]px" style to an element. Were x goes
+                        from 1 to 12</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-margin-8"></div>
+                            <div class="at-m-16"></div>
+                            <div class="at-margin-24"></div>
+                            ...
+                            <div class="at-m-96"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <!--Margin Direction 5x-->
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h4 fxFlex.gt-xs="20" class="at-p-20 at-tw-600">
+                        <code>.at-margin-[direction]-[5x]<br>.at-m[dir]-[5x]</code>
+                    </h4>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set <code>margin-[direction]="[5x]px"</code> style to an element.
+                        Were x goes
+                        from 0 to 20.<br>
+                        <code>direction = top | left | right | bottom | horizontal | vertical</code><br>
+                        <code>dir = t | l | r | b | h | v</code></p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-margin-top-0"></div>
+                            <div class="at-mt-10"></div>
+                            <div class="at-margin-left-15"></div>
+                            <div class="at-ml-20"></div>
+                            <div class="at-margin-right-25"></div>
+                            <div class="at-mr-30"></div>
+                            <div class="at-margin-bottom-35"></div>
+                            <div class="at-mb-40"></div>
+                            <div class="at-margin-horizontal-45"></div>
+                            <div class="at-mh-50"></div>
+                            <div class="at-margin-vertical-55"></div>
+                            ...
+                            <div class="at-mv-100"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+                <!--/Margin Direction 5x-->
+
+                <!--Margin Direction 8x-->
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h4 fxFlex.gt-xs="20" class="at-p-20 at-tw-600">
+                        <code>.at-margin-[direction]-[8x]<br>.at-m[dir]-[8x]</code>
+                    </h4>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set <code>margin-[direction]="[8x]px"</code>
+                        style to an element. Were x goes from 1 to 12.<br>
+                        <code>direction = top | left | right | bottom | horizontal | vertical</code><br>
+                        <code>dir = t | l | r | b | h | v</code></p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-margin-top-8"></div>
+                            <div class="at-mt-16"></div>
+                            <div class="at-margin-left-24"></div>
+                            <div class="at-ml-32"></div>
+                            <div class="at-margin-right-40"></div>
+                            <div class="at-mr-48"></div>
+                            <div class="at-margin-bottom-56"></div>
+                            <div class="at-mb-64"></div>
+                            <div class="at-margin-horizontal-72"></div>
+                            <div class="at-mh-80"></div>
+                            <div class="at-margin-vertical-88"></div>
+                            ...
+                            <div class="at-mv-96"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <!--/Margin Direction 8x-->
+            </md-card-content>
+        </md-card>
+        <br><br>
+    </div>
+</at-scrollbar>

@@ -1,0 +1,81 @@
+<div class="at-sidenav-container" fxLayout="column">
+
+    <md-toolbar [color]="activeSettings.sidenav.headerToolbarColor? 'primary': ''"
+                class="at-toolbar {{activeSettings.sidenav.headerToolbarColor}}"
+                *ngIf="activeSettings.sidenav.header && activeSettings.sidenav.headerType == 'toolbar'">
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+            <img *ngIf="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-primary' || activeSettings.sidenav.headerToolbarColor == 'at-toolbar-dark'"
+                 src="assets/img/at-light-icon.svg" class="at-h-40">
+            <img *ngIf="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-light'"
+                 src="assets/img/at-dark-icon.svg" class="at-h-40">
+            <img *ngIf="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-transparent' && activeSettings.theme.className == 'at-theme-light'"
+                 src="assets/img/at-dark-icon.svg" class="at-h-40">
+            <img *ngIf="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-transparent' && activeSettings.theme.className == 'at-theme-dark'"
+                 src="assets/img/at-light-icon.svg" class="at-h-40">
+            <h5 class="at-ml-5 at-mr-15 at-sidenav-fade-in-on-hover"
+                [class.mat-fg]="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-transparent'">atomic</h5>
+            <span fxFlex><!-- fill space --></span>
+            <div *ngIf="activeSettings.sidenav.headerPin" fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
+                <button [class.mat-fg]="activeSettings.sidenav.headerToolbarColor == 'at-toolbar-transparent'"
+                        md-icon-button (click)="toggleSidenavCollapsed()">
+                    <md-icon class="at-sidenav-fade-in-on-hover">
+                        {{isSidenavCollapsed() ? 'radio_button_unchecked' : 'radio_button_checked'}}
+                    </md-icon>
+                </button>
+            </div>
+        </div>
+    </md-toolbar>
+
+    <ng-container *ngIf="activeSettings.sidenav.headerType == 'custom' && activeSettings.sidenav.header">
+        <ng-container *ngIf="activeSettings.sidenav.headerTypeMix == 'brand' ">
+            <div class="at-ph-10 at-pb-30"
+                 fxLayout="column"
+                 fxLayoutAlign="center center"
+                 [style.padding-top]="'12px'">
+                <img *ngIf="activeSettings.theme.className == 'at-theme-light'"
+                     class="at-wp-80 at-mt-20"
+                     src="assets/img/at-primary-light-icon.svg">
+                <img *ngIf="activeSettings.theme.className == 'at-theme-dark'" class="at-wp-80"
+                     src="assets/img/at-primary-dark-icon.svg">
+                <h2 class="at-sidenav-fade-in-on-hover at-m-0 mat-fg-grey-700 mat-display-1"
+                    [class.mat-fg-grey-700]="activeSettings.theme.className == 'at-theme-light'"
+                    [class.mat-fg-white]="activeSettings.theme.className == 'at-theme-dark'">atomic</h2>
+                <!--<img class="at-sidenav-fade-in-on-hover" style="margin-top: -20px" src="assets/img/aviator-text.png">-->
+            </div>
+        </ng-container>
+        <ng-container *ngIf="activeSettings.sidenav.headerTypeMix == 'user'">
+            <div fxLayout="column" fxFlexAlign="start end" class="at-sidenav-header-user-wrapper at-h-200">
+                <div fxFlex>
+                    <img class="at-ml-20 at-mt-40 at-mb-15" src="https://randomuser.me/api/portraits/med/women/40.jpg">
+                </div>
+                <md-select class="at-pl-20 at-pr-20 at-mb-40">
+                    <md-option value="1">Wilma Arndt</md-option>
+                    <md-option value="2">Jhon Doe</md-option>
+                </md-select>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <at-scrollbar [name]="'avSidenavScrollbar'" class="at-sidenav-scrollbar-container" fxLayout="column">
+        <md-nav-list fxLayout="column" class="at-sidenav-list sidenav-toplevel">
+            <at-sidenav-item *ngFor="let atSidenavItem of atSidenavItems" [item]="atSidenavItem"></at-sidenav-item>
+        </md-nav-list>
+    </at-scrollbar>
+
+    <md-toolbar *ngIf="activeSettings.sidenav.footer"
+                [color]="activeSettings.sidenav.footerToolbarColor == 'at-toolbar-primary' ? 'primary': ''"
+                class="at-sidenav-footer at-toolbar {{activeSettings.sidenav.footerToolbarColor}}">
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+            <h4 class="at-mb-0 at-sidenav-fade-in-on-hover" fxFlex>Sidebar Footer</h4>
+            <span fxFlex><!-- fill space --></span>
+            <div fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
+                <button *ngIf="activeSettings.sidenav.footerPin" md-icon-button (click)="toggleSidenavCollapsed()">
+                    <md-icon class="icon-sidenav-toggle"
+                             [class.rotate]="isSidenavCollapsed()">chevron_left
+                    </md-icon>
+                </button>
+            </div>
+        </div>
+    </md-toolbar>
+
+</div>

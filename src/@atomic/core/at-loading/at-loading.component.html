@@ -1,0 +1,31 @@
+<div class="at-loading-wrapper"
+     [style.min-height]="getHeight()"
+     [class.at-overlay]="isOverlay() || isFullScreen()"
+     [class.at-fullscreen]="isFullScreen()">
+    <div [@atFadeInOut]="animation"
+         (@atFadeInOut.done)="animationComplete($event)"
+         [style.min-height]="getHeight()"
+         class="at-loading">
+        <div fxLayout="column"
+             fxLayoutAlign="center center"
+             [style.height]="'100%'">
+            <md-progress-spinner *ngIf="isCircular()"
+                                 [mode]="mode"
+                                 [value]="value"
+                                 [color]="color"
+                                 [style.height]="getCircleDiameter()"
+                                 [style.width]="getCircleDiameter()"
+            ></md-progress-spinner>
+            <h1 *ngIf="mode == 'determinate' && message && value" style="margin-bottom: 10px">{{value + ' %'}}</h1>
+            <h1 [@atFadeOpacity]="showingMessage"
+                *ngIf="mode == 'indeterminate' && message" style="margin-bottom: 0">{{theMessage}}</h1>
+            <md-progress-bar *ngIf="isLinear()"
+                             [mode]="mode"
+                             [value]="value"
+                             [color]="color">
+            </md-progress-bar>
+        </div>
+
+    </div>
+    <ng-template [cdkPortalHost]="content"></ng-template>
+</div>

@@ -1,0 +1,22 @@
+<at-layout #layoutMain
+           [layoutType]="'main'">
+    <ng-template at-layout-toolbar
+                 [position]="activeSettings.toolbar.position">
+        <app-toolbar [layoutRef]="layoutMain"></app-toolbar>
+    </ng-template>
+    <ng-template at-layout-sidepanel width="260px">
+        <app-settings></app-settings>
+    </ng-template>
+    <ng-template at-layout-sidenav
+                 [size]="activeSettings.sidenav.size"
+                 [pattern]="activeSettings.sidenav.pattern"
+                 [elevation]="activeSettings.sidenav.elevation"
+                 [collapsible]="true">
+        <app-sidenav></app-sidenav>
+    </ng-template>
+    <div at-layout-content>
+        <router-outlet></router-outlet>
+    </div>
+</at-layout>
+
+

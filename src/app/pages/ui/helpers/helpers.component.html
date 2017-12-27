@@ -1,0 +1,37 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="brown-700" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>CSS Helpers</span>
+            </h1>
+            <h4 class="at-mb-5 at-tw-400 mat-fg-white">
+                <span>Atomic includes many utility styles to save you time. </span>
+                <span fxHide="true" fxHide.gt-sm="false">If each UI element is an atom, think of these classes as subatomic particles.</span>
+            </h4>
+        </div>
+    </div>
+
+    <div at-layout-content [showAtScrollbar]="false" ngClass="at-padding-5" ngClass.gt-sm="at-pv-40 at-ph-80">
+        <md-tab-group class="at-hp-100">
+            <md-tab label="General">
+                <app-helpers-general></app-helpers-general>
+            </md-tab>
+            <md-tab label="Position">
+                <app-helpers-position></app-helpers-position>
+            </md-tab>
+            <md-tab label="Size">
+                <app-helpers-size></app-helpers-size>
+            </md-tab>
+            <md-tab label="Text">
+                <app-helpers-text></app-helpers-text>
+            </md-tab>
+            <md-tab label="Border">
+                <app-helpers-border></app-helpers-border>
+            </md-tab>
+        </md-tab-group>
+    </div>
+
+</at-layout>

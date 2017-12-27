@@ -1,0 +1,29 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="container">
+
+    <div at-layout-header color="blue-grey-800" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>Tabbed Layout</span>
+            </h1>
+            <h4 class="at-mb-5 mat-fg-white">Scroll on container, full width</h4>
+        </div>
+    </div>
+
+    <div at-layout-content>
+        <md-tab-group>
+            <md-tab label="Tab 1">
+                <div ngClass="at-p-10" ngClass.gt-sm="at-p-40">
+                    <app-layout-content></app-layout-content>
+                </div>
+            </md-tab>
+            <md-tab label="Tab 2">
+                <div ngClass="at-p-10" ngClass.gt-sm="at-p-40">
+                    <app-layout-content ></app-layout-content>
+                </div>
+            </md-tab>
+        </md-tab-group>
+    </div>
+
+</at-layout>

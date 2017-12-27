@@ -1,0 +1,501 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtForms</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">
+            <span>A component to show form fields status</span>
+            <span fxHide="true" fxHide.gt-sm="false">, errors and a set of validators.</span></h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <p><strong>Note:</strong> At this time AtForm only works with model driven forms (Reactive forms)</p>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h5 fxFlex>AtFormField Example</h5>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="row" fxLayoutWrap>
+                    <div fxFlex>
+                        <form [formGroup]="formFieldEx" novalidate
+                              fxLayot="column">
+
+                            <div fxLayout="row" fxLayoutWrap>
+                                <div fxLayout="column" fxFlex>
+                                    <at-form-field class="at-mh-15 at-mt-10" label="Code"
+                                                   [showLabel]="true"
+                                                   [field]="formFieldEx.get('code')"
+                                                   [required]="true">
+                                        <md-input-container>
+                                            <input mdInput
+                                                   [formControl]="formFieldEx.get('code')"
+                                                   maxlength="3">
+                                        </md-input-container>
+                                    </at-form-field>
+
+                                    <at-form-field class="at-mh-15 at-mt-10" label="Phone Number"
+                                                   [showLabel]="true"
+                                                   [field]="formFieldEx.get('officePhone')"
+                                                   [required]="true">
+                                        <md-input-container>
+                                            <input mdInput
+                                                   [formControl]="formFieldEx.get('officePhone')"
+                                                   placeholder="Phone Number"
+                                                   maxlength="10">
+                                        </md-input-container>
+                                    </at-form-field>
+
+                                    <at-form-field class="at-mh-15 at-mt-10" label="Website Url"
+                                                   [showLabel]="true"
+                                                   [field]="formFieldEx.get('websiteUrl')">
+                                        <md-input-container>
+                                            <input mdInput
+                                                   [formControl]="formFieldEx.get('websiteUrl')"
+                                                   maxlength="70">
+                                        </md-input-container>
+                                    </at-form-field>
+
+
+                                </div>
+
+                                <div fxLayout="column" fxFlex>
+                                    <at-form-field class="at-mh-15 at-mt-10" label="Name"
+                                                   [showLabel]="true"
+                                                   [field]="formFieldEx.get('name')"
+                                                   [required]="true">
+                                        <md-input-container>
+                                            <input mdInput
+                                                   [formControl]="formFieldEx.get('name')"
+                                                   maxlength="100">
+                                        </md-input-container>
+                                    </at-form-field>
+
+                                    <at-form-field class="at-mh-15 at-mt-10" label="Email"
+                                                   [showLabel]="true"
+                                                   [field]="formFieldEx.get('emailAddress')"
+                                                   [required]="true">
+                                        <md-input-container>
+                                            <input mdInput
+                                                   [formControl]="formFieldEx.get('emailAddress')"
+                                                   maxlength="45">
+                                        </md-input-container>
+                                    </at-form-field>
+                                </div>
+                            </div>
+
+                            <button md-raised-button color="primary" type="submit" [disabled]="!formFieldEx.valid">
+                                Submit
+                            </button>
+
+                        </form>
+                    </div>
+                    <div class="at-ph-40">
+                        <md-card class="mat-bg-grey-100">
+                            <pre>{{formFieldEx.value | json}}</pre>
+                        </md-card>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>Validators Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="row" fxLayoutAlign="center center">
+                    <form [formGroup]="formValidatorsEx" novalidate
+                          fxLayot="column"
+                          style="max-width: 500px; min-width: 280px">
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Required field</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Required"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('required')"
+                                           [required]="true">
+                                <md-input-container>
+                                    <input mdInput placeholder="Required"
+                                           [formControl]="formValidatorsEx.get('required')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Email</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Email"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('email')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Email"
+                                           [formControl]="formValidatorsEx.get('email')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">URL</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="URL"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('url')">
+                                <md-input-container>
+                                    <input mdInput placeholder="URL"
+                                           [formControl]="formValidatorsEx.get('url')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <!--Numbers-->
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow only integers</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Integer"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('int')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Integer"
+                                           [formControl]="formValidatorsEx.get('int')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow only unsigned integers</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Unsigned Integer"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('unsignedInt')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Unsigned Integer"
+                                           [formControl]="formValidatorsEx.get('unsignedInt')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow only floating numbers</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Float"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('float')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Float"
+                                           [formControl]="formValidatorsEx.get('float')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow numbers equal or greather than
+                                12</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Min 12"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('min')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Min 12"
+                                           [formControl]="formValidatorsEx.get('min')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow numbers less than or equal 25</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Max 25"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('max')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Max 25"
+                                           [formControl]="formValidatorsEx.get('max')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Allow numbers between 5 and 10</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Range 5-10"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('range')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Range 5-10"
+                                           [formControl]="formValidatorsEx.get('range')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <!--Length-->
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Minimum 6 characters</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Min Length 6"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('minLength')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Min Length 6"
+                                           [formControl]="formValidatorsEx.get('minLength')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Maximun 12 characters</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Max Length 12"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('maxLength')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Max Length 12"
+                                           [formControl]="formValidatorsEx.get('maxLength')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Range 6-20 characters length</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Range Length 6-20"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('rangeLength')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Range Length 6-20"
+                                           [formControl]="formValidatorsEx.get('rangeLength')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Exactly 10 characters length</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="10 chars length"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('exactLength')">
+                                <md-input-container>
+                                    <input mdInput placeholder="10 chars length"
+                                           [formControl]="formValidatorsEx.get('exactLength')" maxlength="10">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Alphanumeric and hyphen and underscore
+                                characters
+                            </label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400"
+                                           label="Custom Alphanumeric"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('alpha')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Custom Alphanumeric"
+                                           [formControl]="formValidatorsEx.get('alpha')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Not allow +- characters</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Exclude"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('exclude')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Exclude"
+                                           [formControl]="formValidatorsEx.get('exclude')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Multiple include validators</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Include"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('include')"
+                                           [required]="true">
+                                <md-input-container>
+                                    <input mdInput placeholder="Include"
+                                           [formControl]="formValidatorsEx.get('include')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Match other field</label>
+                            <div fxLayout="row" fxLayoutWrap>
+                                <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Password"
+                                               [showLabel]="false"
+                                               [field]="formValidatorsEx.get('password')"
+                                               [required]="true">
+                                    <md-input-container>
+                                        <input mdInput placeholder="Password"
+                                               [formControl]="formValidatorsEx.get('password')">
+                                    </md-input-container>
+                                </at-form-field>
+                                <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400"
+                                               label="Repeat Password"
+                                               [showLabel]="false"
+                                               [field]="formValidatorsEx.get('repeatPassword')"
+                                               [required]="true">
+                                    <md-input-container>
+                                        <input mdInput placeholder="Repeat Password"
+                                               autocomplete="off"
+                                               [formControl]="formValidatorsEx.get('repeatPassword')">
+                                    </md-input-container>
+                                </at-form-field>
+                            </div>
+
+                        </div>
+
+
+                        <div class="at-mb-10" fxLayout="row" fxLayoutAlign="start center">
+                            <label class="mat-grey-600 at-w-120 text-right">Only allows yes or no strings</label>
+                            <at-form-field class="at-mh-15 at-mt-10" ngClass.gt-sm="at-w-400" label="Custom validator"
+                                           [showLabel]="false"
+                                           [field]="formValidatorsEx.get('custom')">
+                                <md-input-container>
+                                    <input mdInput placeholder="Custom validator"
+                                           autocomplete="off"
+                                           [formControl]="formValidatorsEx.get('custom')">
+                                </md-input-container>
+                            </at-form-field>
+                        </div>
+
+
+                        <button md-raised-button color="primary" type="submit" [disabled]="!formValidatorsEx.valid">
+                            Submit
+                        </button>
+
+
+                    </form>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use AtFormField Component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtFormsModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtFormsModule } from '@atomic/core';
+
+                                @NgModule({
+                                imports: [
+                                AtFormsModule,
+                                ...
+                                ],
+                                ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3 class="at-mt-40">Usage</h3>
+                    <p>Use <code>at-form-field</code> as a wrapper for your input. Provide a "label" to display as a
+                        "fieldLabel" on Error messages or before the input fields if you want horizontal forms.</p>
+
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <form [formGroup]="form" novalidate>
+                                    ...
+                                    <at-form-field label="Required"
+                                                   [showLabel]="false"
+                                                   [field]="form.get('required')"
+                                                   [required]="true">
+                                        <md-input-container>
+                                            <input mdInput placeholder="Required"
+                                                   [formControl]="form.get('required')">
+                                        </md-input-container>
+                                    </at-form-field>
+                                </form>
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div fxLayout="column">
+                    <h2>How to use AtValidators</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtFormsModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtFormsModule } from '@atomic/core';
+
+                                @NgModule({
+                                imports: [
+                                AtFormsModule,
+                                ...
+                                ],
+                                ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <p>Import AtValidators in your component and pass one or a combination of AtValidators to the form
+                        control. Each AtValidator support a custom message to display in case of errors.</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import {FormBuilder, FormGroup} from '@angular/forms';
+                                import {AtValidators} from '@atomic/core';
+
+                                @Component({
+                                ...
+                                })
+                                export class MyComponent implements OnInit {
+                                form: FormGroup;
+
+                                constructor(private formBuilder: FormBuilder) {
+
+                                }
+
+                                ngOnInit() {
+                                this.form = this.formBuilder.group({
+                                code: [null, [
+                                AtValidators.required('your custom error message goes here'),
+                                AtValidators.minLength(3, 'your custom error message goes here')
+                                ]],
+                                name: [null, [
+                                AtValidators.required(),
+                                AtValidators.maxLength(100)
+                                ]],
+                                websiteUrl: [null, [
+                                AtValidators.maxLength(70)
+                                ]],
+                                emailAddress: [null, [
+                                AtValidators.email(),
+                                AtValidators.maxLength(45)
+                                ]],
+                                officePhone: [null, [
+                                AtValidators.required,
+                                AtValidators.maxLength(16)
+                                ]]
+                                });
+                                }
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

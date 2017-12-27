@@ -1,0 +1,204 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtChips</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Autocomplete with chips.</h4>
+    </div>
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtChips Autocomplete, no custom inputs Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <br>
+                    <at-chips [chipAddition]="chipAddition"
+                              [chipRemoval]="chipRemoval"
+                              [items]="filteredStrings"
+                              [(ngModel)]="stringsModel"
+                              placeholder="Enter autocomplete strings"
+                              [disabled]="disabled"
+                              (inputChange)="filterStrings($event)"
+                              [requireMatch]="'true'">
+                    </at-chips>
+                </md-card-content>
+                <md-card-actions class="at-m-0">
+                    <md-divider></md-divider>
+                    <div class="at-p-20">
+                        <md-slide-toggle color="accent" [(ngModel)]="disabled" class="at-mr-20">
+                            Disabled
+                        </md-slide-toggle>
+
+                        <md-slide-toggle color="accent" [(ngModel)]="chipAddition" class="at-mr-20">
+                            Chip addition
+                        </md-slide-toggle>
+
+                        <md-slide-toggle color="accent" [(ngModel)]="chipRemoval">
+                            Chip removal
+                        </md-slide-toggle>
+                    </div>
+                </md-card-actions>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtChips with autocomplete, templates and accent color Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                    <at-chips fxFlex color="accent"
+                              [items]="filteredObjects"
+                              [(ngModel)]="objectsModel"
+                              placeholder="Enter autocomplete strings"
+                              (inputChange)="filterObjects($event)"
+                              requireMatch>
+                        <ng-template at-chip let-chip="chip">
+                            <md-icon>location_city</md-icon>
+                            {{chip.city}}, (Pop: {{chip.population}})
+                        </ng-template>
+                        <ng-template at-autocomplete-option let-option="option">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <md-icon>location_city</md-icon>
+                                {{option.city}}
+                            </div>
+                        </ng-template>
+                    </at-chips>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20" >
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtChips with async autocomplete and chip avatar template Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column">
+                    <p>
+                        <span>Load autocomplete items asynchronous when typing in the input.</span>
+                        <br>
+                        <span>Type and see how it will load items async:</span>
+                    </p>
+                    <at-chips fxFlex [items]="filteredAsync"
+                              [debounce]="500"
+                              [(ngModel)]="asyncModel"
+                              placeholder="Enter autocomplete strings"
+                              (inputChange)="filterAsync($event)"
+                              requireMatch>
+                        <ng-template at-chip let-chip="chip">
+                            <div class="mat-fg-grey-100 mat-bg-blue-700" at-chip-avatar>
+                                {{chip.substring(0, 1).toUpperCase()}}
+                            </div>
+                            {{chip}}
+                        </ng-template>
+                        <md-progress-bar [style.height.px]="2" *ngIf="filteringAsync"
+                                         mode="indeterminate"></md-progress-bar>
+                    </at-chips>
+                    <br>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20" >
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtChips stacked with autocomplete custom inputs Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column">
+                    <p>
+                        <span>Autocomplete demo allowing custom inputs and stacked chips</span>
+                    </p>
+                    <at-chips [items]="filteredStackedStrings"
+                              [(ngModel)]="stackedStringsModel"
+                              placeholder="Enter any string"
+                              (inputChange)="filterStackedStrings($event)"
+                              stacked>
+                    </at-chips>
+                    <br>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20" >
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtChips Custom Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column">
+                    <p>
+                        <span>Demo allowing custom inputs for tags and warn color</span>
+                    </p>
+                    <at-chips color="warn" placeholder="Enter any string"></at-chips>
+                    <br>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use avChips component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[avChipsModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { avChipsModule } from '@aviator/core';
+
+                                @NgModule({
+                                imports: [
+                                avChipsModule,
+                                ...
+                                ],
+                                ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <at-chips placeholder="placeholder"
+                                          color="primary"
+                                          [items]="items"
+                                          [(ngModel)]="model"
+                                          [disabled]="disabled"
+                                          [chipAddition]="chipAddition"
+                                          [chipRemoval]="chipRemoval"
+                                          (add)="addEvent($event)"
+                                          (remove)="removeEvent($event)"
+                                          (inputChange)="inputChange($event)"
+                                          requireMatch
+                                          stacked>
+                                    <ng-template at-chip let-chip="chip">
+                                        <div at-chip-avatar>A</div>
+                                        { {chip} }
+                                    </ng-template>
+                                    <ng-template at-autocomplete-option let-option="option">
+                                        { {option} }
+                                    </ng-template>
+                                    // anything below it
+                                </at-chips>
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

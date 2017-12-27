@@ -1,0 +1,223 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>AtDataTable</span>
+            </h1>
+            <h4 class="at-mb-5 mat-fg-white">Display sets of raw data.</h4>
+        </div>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtDatatable Basic Example </h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column">
+                    <at-data-table
+                            [data]="basicData"
+                            [columns]="columns">
+                        <ng-template atDataTableTemplate="type"
+                                     let-value="value"
+                                     let-row="row"
+                                     let-column="column">
+                            <div fxLayout="row">
+                                <span fxFlex>{{value}}</span>
+                                <md-icon>star</md-icon>
+                            </div>
+                        </ng-template>
+                    </at-data-table>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4>AtDatatable Advanced Example</h4>
+                    <at-search-box #searchBox
+                                   backIcon="arrow_back"
+                                   class="push-right-sm"
+                                   placeholder="Search here"
+                                   (searchDebounce)="search($event)" fxFlex>
+                    </at-search-box>
+                    <button md-icon-button>
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                </md-toolbar>
+                <md-card-content class="at-p-20" fxLayout="column" style="max-width: 100%;">
+                    <at-data-table
+                            #dataTable
+                            [data]="filteredData"
+                            [columns]="columns"
+                            [selectable]="selectable"
+                            [clickable]="clickable"
+                            [multiple]="multiple"
+                            [sortable]="true"
+                            [sortBy]="sortBy"
+                            [(ngModel)]="selectedRows"
+                            [sortOrder]="sortOrder"
+                            (sortChange)="sort($event)"
+                            (rowClick)="showAlert($event)">
+                    </at-data-table>
+                    <div class="md-padding" *ngIf="!dataTable.hasData" fxLayout="row" fxLayoutAlign="center center">
+                        <h3>No results to display.</h3>
+                    </div>
+                    <at-paging-bar #pagingBar
+                                   [pageSize]="pageSize"
+                                   [total]="filteredTotal" (change)="page($event)">
+                        <span hide-xs>Rows per page:</span>
+                        <md-select [style.width.px]="50" [(ngModel)]="pageSize">
+                            <md-option *ngFor="let size of [5,10,15,20]" [value]="size">
+                                {{size}}
+                            </md-option>
+                        </md-select>
+                        {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                    </at-paging-bar>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use AtDatatable Component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtDatatableModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtDatatableModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtDatatableModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <at-data-table
+                                        [data]="basicData"
+                                        [columns]="columns">
+                                    <ng-template atDataTableTemplate="type"
+                                                 let-value="value"
+                                                 let-row="row"
+                                                 let-column="column">
+                                        <div fxLayout="row">
+                                            <span fxFlex>{ { value } }</span>
+                                            <md-icon>star</md-icon>
+                                        </div>
+                                    </ng-template>
+                                </at-data-table>
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div fxLayout="column">
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import {Component, OnInit} from '@angular/core';
+                                import {
+                                    AtDataTableSortingOrder,
+                                    IAtDataTableColumn,
+                                    IPageChangeEvent,
+                                    IAtDataTableSortChangeEvent,
+                                    AtDataTableService,
+                                    AtDialogService
+                                } from '@aviator/core';
+
+                                const NUMBER_FORMAT: (v: any) => any = (v: number) => v;
+                                const DECIMAL_FORMAT: (v: any) => any = (v: number) => v.toFixed(2);
+                                ...
+
+                                export class MyComponent {
+
+                                    columns: IAtDataTableColumn[] = [
+                                        {name: 'name', label: 'Dessert (100g serving)', sortable: true},
+                                        {name: 'type', label: 'Type', filter: true},
+                                        {name: 'calories', label: 'Calories', numeric: true, format: NUMBER_FORMAT, sortable: true, hidden: false},
+                                        {name: 'fat', label: 'Fat (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true},
+                                        {name: 'carbs', label: 'Carbs (g)', numeric: true, format: NUMBER_FORMAT},
+                                        {name: 'protein', label: 'Protein (g)', numeric: true, format: DECIMAL_FORMAT},
+                                        {name: 'sodium', label: 'Sodium (mg)', numeric: true, format: NUMBER_FORMAT},
+                                        {name: 'calcium', label: 'Calcium (%)', numeric: true, format: NUMBER_FORMAT},
+                                        {name: 'iron', label: 'Iron (%)', numeric: true, format: NUMBER_FORMAT},
+                                    ];
+
+                                    basicData: any[] = [
+                                        {
+                                            'id': 1,
+                                            'name': 'Frozen yogurt',
+                                            'type': 'Ice cream',
+                                            'calories': 159.0,
+                                            'fat': 6.0,
+                                            'carbs': 24.0,
+                                            'protein': 4.0,
+                                            'sodium': 87.0,
+                                            'calcium': 14.0,
+                                            'iron': 1.0,
+                                            'comments': 'I love froyo!',
+                                        }, {
+                                            'id': 2,
+                                            'name': 'Ice cream sandwich',
+                                            'type': 'Ice cream',
+                                            'calories': 237.0,
+                                            'fat': 9.0,
+                                            'carbs': 37.0,
+                                            'protein': 4.3,
+                                            'sodium': 129.0,
+                                            'calcium': 8.0,
+                                            'iron': 1.0,
+                                        },
+
+                                        ...
+                                    ]
+
+                                    constructor() {
+
+                                    }
+
+                                }
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</at-layout>

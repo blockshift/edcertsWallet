@@ -1,0 +1,220 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtSteps</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">A sequence of logical & numbered steps. Ideal for build form Wizards.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+        <h2>Example</h2>
+        <p>Use AtMedia when you need to toggle classes or attributes based on media queries.</p>
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtSteps Horizontal Example</h4>
+            </md-toolbar>
+            <md-card-content>
+                <at-steps [mode]="'horizontal'">
+                    <at-step #step1
+                             label="Basic Usage"
+                             sublabel="Toggle between active and inactive and emit events."
+                             [active]="true" [disabled]="disabled"
+                             (activated)="activeStep1Event()"
+                             (deactivated)="deactiveStep1Event()">
+                        <ng-template at-step-label>
+                            <span>Basic Usage (template)</span>
+                        </ng-template>
+                        Include any content you like for an active stepper
+                    </at-step>
+                    <at-step #step2
+                             label="Required State"
+                             sublabel="Toggle between active and inactive while in required state and disable ripple."
+                             [state]="stateStep2" [disabled]="disabled" disableRipple>
+                        This step is required!
+                        <ng-template at-step-actions>
+                            <button md-raised-button color="primary" (click)="toggleRequiredStep2()"
+                                    class="text-upper">Toggle Require
+                            </button>
+                            <button md-button (click)="step2.active = false" class="text-upper">Cancel</button>
+                        </ng-template>
+                    </at-step>
+                    <at-step #step3
+                             label="Complete State"
+                             sublabel="Toggle between active and inactive while in complete state."
+                             [state]="stateStep3" [disabled]="disabled">
+                        Mark this step complete and get a summary
+                        <ng-template at-step-summary>
+                            Use an optional step summary to summarize the info in this step
+                        </ng-template>
+                        <ng-template at-step-actions>
+                            <button md-raised-button color="primary" (click)="toggleCompleteStep3()"
+                                    class="text-upper">Toggle Complete
+                            </button>
+                            <button md-button (click)="step3.active = false" class="text-upper">Cancel</button>
+                        </ng-template>
+                    </at-step>
+                </at-steps>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtSteps Vertical Example</h4>
+            </md-toolbar>
+            <md-card-content fxLayout="column">
+                <at-steps>
+                    <at-step #step1
+                             label="Basic Usage"
+                             sublabel="Toggle between active and inactive and emit events."
+                             [active]="true" [disabled]="disabled"
+                             (activated)="activeStep1Event()"
+                             (deactivated)="deactiveStep1Event()">
+                        <ng-template at-step-label>
+                            <span>Basic Usage (template)</span>
+                        </ng-template>
+                        Include any content you like for an active stepper
+                    </at-step>
+                    <at-step #step2
+                             label="Required State"
+                             sublabel="Toggle between active and inactive while in required state and disable ripple."
+                             [state]="stateStep2" [disabled]="disabled" disableRipple>
+                        This step is required!
+                        <ng-template at-step-actions>
+                            <button md-raised-button color="primary" (click)="toggleRequiredStep2()"
+                                    class="text-upper">Toggle Require
+                            </button>
+                            <button md-button (click)="step2.active = false" class="text-upper">Cancel</button>
+                        </ng-template>
+                    </at-step>
+                    <at-step #step3
+                             label="Complete State"
+                             sublabel="Toggle between active and inactive while in complete state."
+                             [state]="stateStep3" [disabled]="disabled">
+                        Mark this step complete and get a summary
+                        <ng-template at-step-summary>
+                            Use an optional step summary to summarize the info in this step
+                        </ng-template>
+                        <ng-template at-step-actions>
+                            <button md-raised-button color="primary" (click)="toggleCompleteStep3()"
+                                    class="text-upper">Toggle Complete
+                            </button>
+                            <button md-button (click)="step3.active = false" class="text-upper">Cancel</button>
+                        </ng-template>
+                    </at-step>
+                </at-steps>
+            </md-card-content>
+        </md-card>
+
+        <div id="doc" class="at-mt-20">
+            <div>
+                <h2>How to use AtSteps component</h2>
+
+                <h3>Setup</h3>
+                <p>Import the <code>[AtStepsModule]</code> in your NgModule:</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="typescript">
+                            <![CDATA[
+                            import { AtStepsModule } from '@aviator/core';
+
+                            @NgModule({
+                                imports: [
+                                    AtStepsModule,
+                                    ...
+                                ],
+                                ...
+                            })
+                            export class MyModule {}
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+
+                <h3>Usage</h3>
+                <p>Simply wrap the <code>< at-step ></code>  elements you need in a <code>< at-steps ></code> element.</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <at-steps (stepChange)="change($event)" mode="'vertical'|'horizontal'">
+                                <at-step>
+                                    <at-step #step
+                                             label="Label"
+                                             sublabel="Sublabel"
+                                             [active]="active"
+                                             [disabled]="disabled"
+                                             [state]="state"
+                                             (activated)="activeEvent()"
+                                             (deactivated)="deactiveEvent()"
+                                             [disableRipple]="false">
+                                        <ng-template at-step-label>
+                                            ... add label content (if not used, falls back to [label] input)
+                                        </ng-template>
+                                        ... add content that will be shown when the step is "active"
+                                        <ng-template at-step-actions>
+                                            <button (click)="step.close()">Close</button>
+                                            ... add button elements for the step content (optional)
+                                        </ng-template>
+                                        <ng-template at-step-summary>
+                                            ... add summary that will be shown when step in is "complete" state (optional)
+                                        </ng-template>
+                                    </at-step>
+                                </at-step>
+                                ...
+                            </at-steps>
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+                <br><br>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="typescript">
+                            <![CDATA[
+                            import { StepState } from '@aviator/core';
+                            ...
+
+                            export class Demo {
+                                active: boolean = false;
+                                disabled: boolean = false;
+                                state: StepState = StepState.Required; // or state: string = "required";
+
+                                activeEvent(): void {
+                                    ...
+                                };
+
+                                deactiveEvent(): void {
+                                    ...
+                                };
+                            }
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</at-layout>

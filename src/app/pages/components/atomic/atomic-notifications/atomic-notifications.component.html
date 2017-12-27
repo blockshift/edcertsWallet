@@ -1,0 +1,228 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtNotifications</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Notification count & menu for material toolbars.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <p>Use AtNotifications when you need to highlight something important to the user.</p>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtNotifications Toolbar Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <md-toolbar class="at-toolbar at-toolbar-dark">
+                        <button md-icon-button>
+                            <md-icon>menu</md-icon>
+                        </button>
+                        <span>Toolbar</span>
+                        <span fxFlex></span>
+                        <at-notification-count color="primary" positionX="before" [notifications]="true">
+                            <md-icon>person</md-icon>
+                        </at-notification-count>
+                        <at-notification-count color="light" [notifications]="false">
+                            <md-icon>messages</md-icon>
+                        </at-notification-count>
+                        <button md-icon-button [mdMenuTriggerFor]="notificationsMenu">
+                            <at-notification-count [notifications]="101">
+                                <md-icon>notifications</md-icon>
+                            </at-notification-count>
+                        </button>
+                        <md-menu #notificationsMenu="mdMenu" [overlapTrigger]="false">
+                            <div>
+                                <div fxLayout="row" fxLayoutAlign="center center"
+                                     class="at-bb mat-bb-grey-300 at-pt-10 at-pb-15"><strong>Notifications</strong>
+                                </div>
+                                <md-nav-list dense>
+                                    <ng-template let-last="last" ngFor [ngForOf]="[0,1,2,3,4]">
+                                        <a md-list-item>
+                                            <at-icon md-list-avatar name="today" backgroundType="solid"></at-icon>
+                                            <!--<md-icon md-list-avatar>today</md-icon>-->
+                                            <h4 md-line><span class="text-wrap">A user did an activity on an item that you've subscribed to follow actions on.</span>
+                                            </h4>
+                                            <p md-line>22 minutes ago</p>
+                                        </a>
+                                        <md-divider *ngIf="!last"></md-divider>
+                                    </ng-template>
+                                </md-nav-list>
+                                <div fxLayout="row" fxLayoutAlign="center center"
+                                     class="at-bt mat-bt-grey-300 at-pb-10 at-pt-15">
+                                    <button md-button color="accent">
+                                        See All Notifications
+                                    </button>
+                                </div>
+
+                            </div>
+                        </md-menu>
+                        <button md-icon-button [mdMenuTriggerFor]="toolbarMenu1">
+                            <md-icon>more_vert</md-icon>
+                        </button>
+                        <md-menu #toolbarMenu1="mdMenu">
+                            <button md-menu-item>
+                                <md-icon>settings</md-icon>
+                                <span>Settings</span>
+                            </button>
+                            <button md-menu-item>
+                                <md-icon>exit_to_app</md-icon>
+                                <span>Sign out</span>
+                            </button>
+                        </md-menu>
+                    </md-toolbar>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtNotifications Tabs Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <md-tab-group md-stretch-tabs>
+                        <md-tab>
+                            <ng-template md-tab-label>
+                                <div fxLayout="row" fxLayoutAlign="center center">
+                                    <div>Activities</div>
+                                    <at-notification-count color="primary" [notifications]="true">
+                                    </at-notification-count>
+                                </div>
+                            </ng-template>
+                        </md-tab>
+                        <md-tab>
+                            <ng-template md-tab-label>
+                                <div fxLayout="row" fxLayoutAlign="center center">
+                                    <div>Logs</div>
+                                    <at-notification-count color="warn" [notifications]="0">
+                                    </at-notification-count>
+                                </div>
+                            </ng-template>
+                        </md-tab>
+                        <md-tab>
+                            <ng-template md-tab-label>
+                                <div fxLayout="row" fxLayoutAlign="center center">
+                                    <div>Chats</div>
+                                    <at-notification-count color="accent" [notifications]="12">
+                                    </at-notification-count>
+                                </div>
+                            </ng-template>
+                        </md-tab>
+                    </md-tab-group>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtNotifications List Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <md-nav-list dense flex>
+                        <a md-list-item>
+                            <md-icon md-list-avatar>person</md-icon>
+                            <h3 md-line> Jyn Erso stole the plans to the Death Star </h3>
+                            <p md-line> 10 mins ago </p>
+                            <span></span>
+                            <at-notification-count color="accent" [notifications]="1">
+                            </at-notification-count>
+                        </a>
+                        <md-divider md-inset></md-divider>
+                        <a md-list-item>
+                            <md-icon md-list-avatar>person</md-icon>
+                            <h3 md-line> Something something something.. dark side. </h3>
+                            <p md-line> 9 hours ago </p>
+                            <span></span>
+                            <at-notification-count color="primary" [notifications]="0">
+                            </at-notification-count>
+                        </a>
+                        <md-divider md-inset></md-divider>
+                        <a md-list-item>
+                            <md-icon md-list-avatar>person</md-icon>
+                            <h3 md-line> Chirrut Îmwe beat down a bunch of storm troopers with a stick </h3>
+                            <p md-line> 2 days ago </p>
+                            <span></span>
+                            <at-notification-count [notifications]="true">
+                            </at-notification-count>
+                        </a>
+                    </md-nav-list>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use at-notification-count component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtNotificationsModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtNotificationsModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtNotificationsModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+
+                                <!--Count Usage-->
+                                <at-notification-count
+                                        positionX="after"
+                                        positionY="top"
+                                        [notifications]="1">
+                                    <md-icon>notifications<md-icon>
+                                </at-notification-count>
+
+                                <!--No Count Usage-->
+                                <at-notification-count
+                                        positionX="after"
+                                        positionY="top"
+                                        [notifications]="true">
+                                    <md-icon>notifications<md-icon>
+                                </at-notification-count>
+
+                                <!--Standalone Count Usage-->
+                                <at-notification-count
+                                        positionX="center"
+                                        positionY="center"
+                                        [notifications]="1">
+                                </at-notification-count>
+
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

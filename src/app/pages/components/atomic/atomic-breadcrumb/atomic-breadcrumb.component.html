@@ -1,0 +1,79 @@
+<at-layout #simpleLayoutMain
+           [layoutType]="'simple'"
+           scrollOn="content">
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtBreadcrumb</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">A component to show a guide of the user location.</h4>
+
+    </div>
+    <div at-layout-content>
+        <div ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+            <div fxLayout="column">
+                <h2>Example</h2>
+                <md-card class="at-p-0">
+                    <md-toolbar color="primary">
+                        <h4 fxFlex>AtBreadcrumb Example</h4>
+                    </md-toolbar>
+                    <md-card-content class="at-p-20">
+                        <at-breadcrumbs></at-breadcrumbs>
+                    </md-card-content>
+                </md-card>
+                <div id="doc" class="at-mt-20">
+                    <div>
+                        <h2>How to use AtBreadcrumb</h2>
+
+                        <h3>Setup</h3>
+                        <p>Import the <code>[AtBreadcrumbModule]</code> in your NgModule:</p>
+                        <md-card class="at-p-0 at-m-20">
+                            <div fxLayoutAlign="start center" class="at-p-10">
+                                <at-icon class="at-mr-10" name="code"
+                                         backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                                <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                            </div>
+                            <md-card-content>
+                                <td-highlight lang="typescript">
+                                    <![CDATA[
+                                    import { AtBreadcrumbModule } from '@aviator/core';
+
+                                    @NgModule({
+                                        imports: [
+                                            AtBreadcrumbModule,
+                                            ...
+                                        ],
+                                        ...
+                                    })
+                                    export class MyModule {}
+                                    ]]>
+                                </td-highlight>
+                                <br>
+                            </md-card-content>
+                        </md-card>
+
+                        <h3>Usage</h3>
+
+                        <md-card class="at-p-0 at-m-20">
+                            <div fxLayoutAlign="start center" class="at-p-10">
+                                <at-icon class="at-mr-10" name="code"
+                                         backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                                <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                            </div>
+                            <md-card-content>
+                                <td-highlight lang="html">
+                                    <![CDATA[
+                                    <at-breadcrumbs></at-breadcrumbs>
+                                    ]]>
+                                </td-highlight>
+                                <br>
+                            </md-card-content>
+                        </md-card>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</at-layout>

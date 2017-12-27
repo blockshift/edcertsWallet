@@ -1,0 +1,156 @@
+<div fxLayout="column" style="height: 100%">
+    <h4 class="at-padding-horizontal-10 at-padding-vertical-15 at-margin-0"
+        [style.background-color]="active.theme.className === 'at-theme-dark' ? 'rgba(33, 33, 33, 0.59)' : '#EEEEEE'"
+    >Configuration</h4>
+    <at-scrollbar fxFlex class="at-p-10" style="overflow: auto">
+        <br>
+        <h5>THEME</h5>
+        <md-radio-group fxLayout="row"
+                        [(ngModel)]="active.theme.className"
+                        (change)="changeThemeColor()">
+            <md-radio-button fxFlex *ngFor="let theme of options.themes"
+                             value="{{theme.className}}"
+                             class="at-ml-10">
+                {{theme.name}}
+            </md-radio-button>
+        </md-radio-group>
+        <br><br>
+        <h5 class="at-mb-5">{{'toolbar' | uppercase}}</h5>
+        <md-radio-group fxLayout="column"
+                        [(ngModel)]="active.toolbar.position"
+                        (change)="saveSettings()" class="at-mb-15">
+            <md-radio-button *ngFor="let position of options.mainToolbar.positions"
+                             value="{{position.value}}"
+                             class="at-ml-10 at-mt-10 at-wp-100">
+                {{position.name}}
+            </md-radio-button>
+        </md-radio-group>
+        <md-select placeholder="Color"
+                   [(ngModel)]="selectedColor"
+                   (change)="changeToolbarColors(selectedColor)"
+                   class="at-mb-15 at-mt-15 at-ml-10 at-mr-15 at-pw-90">
+            <md-option *ngFor="let color of options.mainToolbar.colors"
+                       [value]="color.name">
+                {{color.name | titlecase}}
+            </md-option>
+        </md-select>
+        <md-select placeholder="Elevation"
+                   [(ngModel)]="active.toolbar.elevation"
+                   (change)="saveSettings()"
+                   class="at-mb-15 at-mt-15 at-ml-10 at-mr-20 at-pw-90">
+            <md-option *ngFor="let elevation of options.elevations"
+                       [value]="elevation.className">
+                {{elevation.name | titlecase}}
+            </md-option>
+        </md-select>
+        <md-slide-toggle class="at-ml-10"
+                         [(ngModel)]="active.toolbar.showBreadcrumbs"
+                         (change)="saveSettings()">Show Breadcrumb
+        </md-slide-toggle>
+        <md-slide-toggle class="at-ml-10"
+                         [(ngModel)]="active.toolbar.showFavorites"
+                         (change)="saveSettings()">Show
+            Favorites
+        </md-slide-toggle>
+
+        <br><br><br>
+        <h5>{{'sidenav' | uppercase }}</h5>
+        <md-checkbox [(ngModel)]="active.sidenav.header"
+                     (change)="saveSettings()"
+                     class="at-ml-10">Header
+        </md-checkbox>
+        <div *ngIf="active.sidenav.header" class="at-ml-10">
+            <md-radio-group class="at-ml-10 at-mt-10" fxLayout="row"
+                            [(ngModel)]="active.sidenav.headerType"
+                            (change)="saveSettings()">
+                <md-radio-button fxFlex *ngFor="let headerType of options.sidenav.headerTypes"
+                                 [value]="headerType.name">
+                    {{headerType.name | titlecase}}
+                </md-radio-button>
+            </md-radio-group>
+            <div *ngIf="active.sidenav.headerType == 'toolbar'"
+                 class="at-ml-10 at-mt-10"
+                 fxLayout="column">
+                <md-select placeholder="Color" [(ngModel)]="active.sidenav.headerToolbarColor"
+                           (change)="saveSettings()"
+                           class="at-mb-15 at-mt-15 at-ml-10 at-mr-20">
+                    <md-option *ngFor="let color of options.toolbar.colors"
+                               [value]="color.className">
+                        {{color.name | titlecase}}
+                    </md-option>
+                </md-select>
+                <md-slide-toggle class="at-ml-10"
+                                 [(ngModel)]="active.sidenav.headerPin"
+                                 (change)="saveSettings()"> Show Toggle button
+                </md-slide-toggle>
+            </div>
+            <div *ngIf="active.sidenav.headerType == 'custom'" class="at-ml-10 at-mt-10" fxLayout="column">
+                <md-radio-group class="at-ml-10 at-mt-10" fxLayout="row"
+                                [(ngModel)]="active.sidenav.headerTypeMix"
+                                (change)="saveSettings()">
+                    <md-radio-button fxFlex *ngFor="let headerTypeMix of options.sidenav.headerTypeCustomMixes"
+                                     [value]="headerTypeMix.name">
+                        {{headerTypeMix.name | titlecase}}
+                    </md-radio-button>
+                </md-radio-group>
+            </div>
+        </div>
+
+        <br>
+        <md-checkbox [(ngModel)]="active.sidenav.footer"
+                     (change)="saveSettings()"
+                     class="at-ml-10 at-mt-25">Footer
+        </md-checkbox>
+        <div *ngIf="active.sidenav.footer" class="at-ml-10">
+            <div class="at-ml-10 at-mt-10" fxLayout="column">
+                <md-select placeholder="Color"
+                           [(ngModel)]="active.sidenav.footerToolbarColor"
+                           (change)="saveSettings()"
+                           class="at-mb-15 at-mt-15 at-ml-10 at-mr-20">
+                    <md-option *ngFor="let color of options.toolbar.colors"
+                               [value]="color.className">
+                        {{color.name | titlecase}}
+                    </md-option>
+                </md-select>
+                <md-slide-toggle class="at-ml-10"
+                                 [(ngModel)]="active.sidenav.footerPin"
+                                 (change)="saveSettings()">
+                    Show Toggle button
+                </md-slide-toggle>
+            </div>
+        </div>
+
+        <br>
+        <md-select placeholder="Elevation"
+                   [(ngModel)]="active.sidenav.elevation"
+                   (change)="saveSettings()"
+                   class="at-mb-15 at-mt-15 at-ml-10 at-mr-20 at-pw-90">
+            <md-option *ngFor="let elevation of options.elevations"
+                       [value]="elevation.className">
+                {{elevation.name | titlecase}}
+            </md-option>
+        </md-select>
+
+        <br>
+        <md-select placeholder="Size"
+                   [(ngModel)]="active.sidenav.size"
+                   (change)="saveSettings()"
+                   class="at-mb-15 at-mt-15 at-ml-10 at-mr-20 at-pw-90">
+            <md-option *ngFor="let size of options.sidenav.sizes"
+                       [value]="size.className">
+                {{size.name | titlecase}}
+            </md-option>
+        </md-select>
+
+        <br>
+        <md-select placeholder="Pattern"
+                   [(ngModel)]="active.sidenav.pattern"
+                   (change)="saveSettings()"
+                   class="at-mb-15 at-mt-15 at-ml-10 at-mr-20 at-pw-90">
+            <md-option *ngFor="let pattern of options.patterns" [value]="pattern.className">
+                {{pattern.name | titlecase}}
+            </md-option>
+        </md-select>
+        <br><br>
+    </at-scrollbar>
+</div>

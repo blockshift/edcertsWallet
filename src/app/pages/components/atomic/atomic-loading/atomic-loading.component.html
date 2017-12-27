@@ -1,0 +1,297 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtLoading</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Circular or linear progress loaders.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Examples</h2>
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtLoading directive with (*) syntax Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <div *atLoading="'overlayStarSyntax'; mode:'indeterminate'; type:'circle'; strategy:'overlay'; color:'accent'">
+                        <div fxLayout="column">
+                            <md-input-container fxFlex>
+                                <input mdInput placeholder="Name"/>
+                            </md-input-container>
+                            <md-input-container fxFlex>
+                                <textarea mdInput placeholder="Description" rows="4"></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="at-mt-20">
+                        <button md-button color="primary"
+                                (click)="toggleOverlayStarSyntax()"
+                                class="text-upper">Toggle Loader
+                        </button>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtMedia directive with template syntax Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <div fxLayout="column">
+                        <ng-template atLoading="replaceTemplateSyntax"
+                                     atLoadingMode="determinate"
+                                     atLoadingType="linear"
+                                     atLoadingStrategy="replace"
+                                     atLoadingColor="warn"
+                                     [atLoadingMessage]="true">
+
+                            <md-input-container>
+                                <input mdInput [(ngModel)]="replaceDemo.name" placeholder="Name"/>
+                            </md-input-container>
+                            <md-select placeholder="Type" [(ngModel)]="replaceDemo.type">
+                                <md-option [value]="1">Some type</md-option>
+                                <md-option [value]="2">Another type</md-option>
+                            </md-select>
+                            <md-input-container>
+                                <textarea mdInput
+                                          [(ngModel)]="replaceDemo.description"
+                                          placeholder="Description"
+                                          rows="4"></textarea>
+                            </md-input-container>
+
+
+                        </ng-template>
+                        <div fxFlex layout="row">
+                            <button md-button color="primary"
+                                    (click)="toggleReplaceTemplateSyntax()"
+                                    class="text-upper">
+                                Toggle Loader
+                            </button>
+                        </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>atLoading Directive Example until star syntax with variable reference and observables </h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <div fxLayout="column">
+                        <div *atLoading="let items until listObservable | async; type: 'circle'; color: 'accent'; message: 'Loading...'">
+                            <md-list>
+                                <ng-template let-item let-last="last" ngFor [ngForOf]="items">
+                                    <md-list-item>
+                                        <md-slide-toggle md-line [checked]="item.value">
+                                            {{item.label}}
+                                        </md-slide-toggle>
+                                    </md-list-item>
+                                    <md-divider *ngIf="!last"></md-divider>
+                                </ng-template>
+                            </md-list>
+                        </div>
+                        <div class="at-mt-20">
+                            <button md-button color="primary"
+                                    (click)="createObservableList()"
+                                    class="text-upper">Create observable
+                            </button>
+                        </div>
+                    </div>
+
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtMedia Service Example (fullscreen mask)</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button md-button color="primary"
+                                (click)="toggleConfigFullscreenDemo()"
+                                class="text-upper">Toggle Loader
+                        </button>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+
+                <div fxLayout="column">
+                    <h2>How to use atLoading directive</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[atLoadingModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { atLoadingModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        atLoadingModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+
+
+                    <h3>Usage</h3>
+                    <p>Simply add the atLoading attibute with a "name" value to the element you want to mask.:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <!--(*) syntax-->
+                                <div *atLoading="'theName'; type:'circular'; mode:'indeterminate'; strategy:'replace'; color:'primary'; message:'Loading...'">
+                                    ...
+                                </div>
+
+                                <!-- (*) until async syntax-->
+                                <div *atLoading="let item until observable | async; type:'circular'; color:'primary'">
+                                    { {item} }
+                                </div>
+
+                                <!-- <ng-template> syntax-->
+                                <ng-template atLoading="theName"
+                                             atLoadingType="circular"
+                                             atLoadingMode="indeterminate"
+                                             atLoadingStrategy="replace"
+                                             atLoadingColor="primary">
+                                    ...
+                                </ng-template>
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                    <p><strong>Note:</strong> Dont forget to add the asterisk syntax before the atLoading directive if its not used in a <code>&lt;ng-template></code> element.</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtLoadingService } from '@aviator/core';
+                                ...
+
+                                export class MyComponent {
+                                    constructor(private _loadingService: AtLoadingService) {
+                                        ...
+                                    }
+
+                                    registerLoading(): void {
+                                        this._loadingService.register('stringName');
+                                    }
+
+                                    resolveLoading(): void {
+                                        this._loadingService.resolve('stringName');
+                                    }
+
+                                    changeValue(value: number): void {
+                                        // Usage only enabled on [LoadingMode.Determinate] mode.
+                                        this._loadingService.setValue('stringName', value);
+                                    }
+                                }
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+
+                <div>
+                    <h2>How to use atLoading service</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[atLoading]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtLoadingModule } from '@aviator/core';
+
+                                @NgModule({
+                                imports: [
+                                    AtLoadingModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class AtLoadingModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3>Usage</h3>
+                    <p>The most common usage of the service is to make a function to check the screen or make a method
+                        to watch the screen and subscribe to the media service to get the changes.</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtLoadingService, LoadingType, LoadingMode } from '@aviator/core';
+                                    ...
+                                export class MyComponent {
+
+                                    constructor(private _loadingService: TdLoadingService) {
+                                        this._loadingService.create({
+                                            name: 'stringName',
+                                            type: LoadingType.Circular,
+                                            mode: LoadingMode.Indeterminate,
+                                            color: 'accent',
+                                        });
+                                    }
+
+                                    registerLoading(): void {
+                                        this._loadingService.register('stringName');
+                                    }
+
+                                    resolveLoading(): void {
+                                        this._loadingService.resolve('stringName'); // or this._loadingService.resolveAll('stringName');
+                                    }
+                                }
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

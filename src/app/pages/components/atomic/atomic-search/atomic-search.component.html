@@ -1,0 +1,203 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtSearch</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Search input and search box with debounce.</h4>
+    </div>
+
+    <div at-layout-content class="at-padding-40">
+        <div fxLayout="column">
+        <h2>Example</h2>
+        <md-card class="at-p-0 ">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtSearch Input Example</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20">
+                <div fxLayout="row">
+                    <div fxFlex class="at-padding-horizontal-30" fxLayout="column">
+                        <h2>Enter</h2>
+                        <at-search-input [showUnderline]="true" placeholder="Search here"
+                                         (search)="eSearchInputTerm = $event"
+                                         (clear)="eSearchInputTerm = ''"></at-search-input>
+                        <pre>debounce: false; value: {{eSearchInputTerm || 'Empty'}}</pre>
+
+                    </div>
+                    <div fxFlex class="at-padding-horizontal-30" fxLayout="column">
+                        <h2>Debounce</h2>
+                        <at-search-input [showUnderline]="true"
+                                         placeholder="Search here"
+                                         (searchDebounce)="dSearchInputTerm = $event"></at-search-input>
+
+                        <pre>debounce: 400ms; value: {{dSearchInputTerm || 'Empty'}}</pre>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtSearch Box in Cards Example</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                <div fxFlex class="at-p-20">
+                    <md-card class="at-p-0">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <h3 class="md-title at-m-8">Card</h3>
+                            <span fxFlex></span>
+                            <at-search-box placeholder="Search here"
+                                           [alwaysVisible]="cAlwaysVisible"
+                                           (searchDebounce)="cSearchBoxTerm = $event" flex></at-search-box>
+                            <button md-icon-button>
+                                <md-icon>more_vert</md-icon>
+                            </button>
+                        </div>
+                        <md-divider></md-divider>
+                        <md-card-content class="at-p-40">
+                            <pre>alwaysVisible: false; value: {{cSearchBoxTerm || 'Empty'}}</pre>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div fxFlex class="at-p-20">
+                    <md-card class="at-p-0">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <h3 class="md-title at-m-8">Card</h3>
+                            <span fxFlex></span>
+                            <at-search-box placeholder="Search here"
+                                           [alwaysVisible]="true"
+                                           (searchDebounce)="cSearchBoxTerm = $event" flex></at-search-box>
+                            <button md-icon-button>
+                                <md-icon>more_vert</md-icon>
+                            </button>
+                        </div>
+                        <md-divider></md-divider>
+                        <md-card-content class="at-p-40">
+                            <pre>alwaysVisible: true; value: {{cSearchBoxTerm || 'Empty'}}</pre>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="at-p-0 at-mt-20">
+            <md-toolbar color="primary">
+                <h4 fxFlex>AtSearch Box in Toolbars Example</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="row" fxLayout.sm="column">
+                <div fxFlex class="at-p-20">
+                    <md-toolbar color="primary">
+                        <at-search-box backIcon="arrow_back"
+                                       placeholder="Search here"
+                                       [alwaysVisible]="false"
+                                       fxFlex></at-search-box>
+                        <button md-icon-button>
+                            <md-icon>more_vert</md-icon>
+                        </button>
+                    </md-toolbar>
+                </div>
+                <div fxFlex class="at-p-20">
+                    <md-toolbar color="accent">
+                        <at-search-box backIcon="arrow_back"
+                                       placeholder="Search here"
+                                       [alwaysVisible]="true"
+                                       fxFlex></at-search-box>
+                        <button md-icon-button>
+                            <md-icon>more_vert</md-icon>
+                        </button>
+                    </md-toolbar>
+                </div>
+
+
+            </md-card-content>
+        </md-card>
+
+        <div id="doc" class="at-mt-20">
+            <div>
+                <h2>How to use AtSearch</h2>
+
+                <h3>Setup</h3>
+                <p>Import the <code>[AtSearchModule]</code> in your NgModule:</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="typescript">
+                            <![CDATA[
+                            import { AtSearchModule } from '@aviator/core';
+
+                            @NgModule({
+                                imports: [
+                                    AtSearchModule,
+                                    ...
+                                ],
+                                ...
+                            })
+                            export class MyModule {}
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+                <br>
+
+                <h3>&lt;at-search-input> usage</h3>
+                <p>Use <code>&lt;at-search-input></code> element to generate a search input with its animated cancel button.</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <at-search-input placeholder="Search here"
+                                             [showUnderline]="false|true"
+                                             [debounce]="500"
+                                             (searchDebounce)="searchInputTerm = $event"
+                                             (search)="searchInputTerm = $event"
+                                             (clear)="searchInputTerm = ''">
+                            </at-search-input>
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+                <br>
+
+                <h3>&lt;at-search-box> usage</h3>
+                <p>Use <code>&lt;at-search-input></code> element to generate a search box with animations.</p>
+                <md-card class="at-p-0 at-m-20">
+                    <div fxLayoutAlign="start center" class="at-p-10">
+                        <at-icon class="at-mr-10" name="code"
+                                 backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                        <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                    </div>
+                    <md-card-content>
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <at-search-box backIcon="arrow_back"
+                                           placeholder="Search here"
+                                           [showUnderline]="false|true"
+                                           [debounce]="500"
+                                           [alwaysVisible]="false|true"
+                                           (searchDebounce)="searchInputTerm = $event"
+                                           (search)="searchInputTerm = $event"
+                                           (clear)="searchInputTerm = ''">
+                            </at-search-box>
+                            ]]>
+                        </td-highlight>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</at-layout>

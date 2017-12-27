@@ -1,0 +1,14 @@
+<at-dialog>
+    <at-dialog-title *ngIf="title">
+        {{title}}
+    </at-dialog-title>
+    <at-dialog-content [class.text-center]="!title"
+                       [class.at-pt-40]="!title"
+                       [style.display]="'block'"
+                       [style.font-size]="'18px'">
+        {{message}}
+    </at-dialog-content>
+    <at-dialog-actions>
+        <button md-button color="accent" (click)="close()">{{closeButton}}</button>
+    </at-dialog-actions>
+</at-dialog>

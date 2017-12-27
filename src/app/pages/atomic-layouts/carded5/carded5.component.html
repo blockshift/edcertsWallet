@@ -1,0 +1,41 @@
+<at-layout #layoutCarded
+           [layoutType]="'carded'"
+           scrollOn="content">
+
+    <div at-layout-header color="blue-grey-800" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <div class="at-pt-20 at-pr-10">
+                <button md-icon-button class="mat-fg-white"
+                        atMediaToggle="gt-sm"
+                        [mediaAttributes]="{hidden:true}"
+                        (click)="layoutCarded.toggleSideBarLeft()">
+                    <md-icon>menu</md-icon>
+                </button>
+            </div>
+            <div fxFlex>
+                <h1 class="at-mb-5 mat-fg-white">
+                    <span>Carded Layout</span>
+                </h1>
+                <h4 class="at-mb-5 mat-fg-white">Scroll on content, left sidenav</h4>
+            </div>
+        </div>
+    </div>
+
+    <div at-layout-sidebar-left [width]="'220px'" class="at-hp-100" [showAtScrollbar]="false">
+        <div class="at-hp-100 at-oh" fxLayout="column">
+            <div fxFlex="200px" class="at-p-20">
+                <h4 atMediaToggle="gt-sm" [mediaClasses]="['mat-fg-white']">Sidenav header</h4>
+            </div>
+            <at-scrollbar>
+                <app-layout-sidenav></app-layout-sidenav>
+            </at-scrollbar>
+        </div>
+    </div>
+
+    <div at-layout-content>
+        <div ngClass="at-p-10" ngClass.gt-sm="at-p-40">
+            <app-layout-content></app-layout-content>
+        </div>
+    </div>
+
+</at-layout>

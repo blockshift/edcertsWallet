@@ -1,0 +1,105 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="brown-700" pattern="pattern-1" class="at-ph-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>Typography</span>
+            <span fxFlex></span>
+            <a href="https://material.io/guidelines/style/typography.html" target="_blank"
+               md-icon-button
+               md-tooltip="Typography Specs">
+                <md-icon>launch</md-icon>
+            </a>
+        </h1>
+        <h4 class="at-mb-5 at-tw-400 mat-fg-white">Angular Material provides typography CSS classes you can use to
+            create visual consistency across your application.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-10" ngClass.gt-sm="at-pv-40 at-ph-80">
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>Header Styles</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-display-4</h3>
+                    <label class="mat-display-4 at-mt-40">Light 112px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-20" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-display-3</h3>
+                    <label class="mat-display-3 at-mt-40">Regular 56px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-20" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-display-2</h3>
+                    <label class="mat-display-2 at-mt-40">Regular 45px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-20" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-display-1</h3>
+                    <label class="mat-display-1 at-mt-40">Regular 34px</label>
+                </div>
+                <md-divider></md-divider>
+
+                <div class="at-mt-20" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-headline</h3>
+                    <label class="mat-headline">Regular 24px</label>
+                </div>
+                <md-divider></md-divider>
+
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-title</h3>
+                    <label class="mat-title">Medium 20px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-subheader</h3>
+                    <label class="mat-subheader">Regular 16px</label>
+                </div>
+            </md-card-content>
+        </md-card>
+        <br><br>
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>Body Styles</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="column">
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-body-1</h3>
+                    <label class="mat-body-1">Regular 14px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-body-2</h3>
+                    <label class="mat-body-2">Medium 14px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-button</h3>
+                    <label class="mat-button">Medium 14px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-caption</h3>
+                    <label class="mat-caption">Regular 12px</label>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div class="at-mt-15" fxLayout="row" fxLayoutAlign="start center">
+                    <h3 fxFlex="30" class="at-p-20">.mat-small</h3>
+                    <label class="mat-small">Regular 12px</label>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+</at-layout>

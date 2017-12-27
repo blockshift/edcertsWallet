@@ -1,0 +1,95 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+    <div at-layout-header class="at-hp-100 header-bg"
+         [ngStyle]="{'background-image': 'url(' + getSeason(viewDate) + ')'}">
+        <div class="at-hp-100 at-ph-40 at-pv-10" fxLayout="column">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white at-z-2" fxLayout="row" fxLayoutAlign="start center">
+                <span>Calendar</span>
+                <span fxFlex></span>
+                <a md-icon-button
+                   mwlCalendarToday
+                   md-tooltip="Today"
+                   [(viewDate)]="viewDate">
+                    <md-icon>today</md-icon>
+                </a>
+                <a md-icon-button
+                   md-tooltip="Day"
+                   (click)="view = 'day'">
+                    <md-icon>view_day</md-icon>
+                </a>
+                <a md-icon-button
+                   md-tooltip="Week"
+                   (click)="view = 'week'">
+                    <md-icon>view_week</md-icon>
+                </a>
+                <a md-icon-button
+                   md-tooltip="Month"
+                   (click)="view = 'month'">
+                    <md-icon>view_module</md-icon>
+                </a>
+            </h1>
+            <div class="mat-fg-white at-z-2" fxLayout="row" fxLayoutAlign="center center">
+
+                <button md-icon-button
+                        mwlCalendarPreviousView
+                        [view]="view"
+                        [(viewDate)]="viewDate"
+                        aria-label="Previous">
+                    <md-icon>chevron_left</md-icon>
+                </button>
+
+                <div class="title">
+                    {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+                </div>
+
+                <button md-icon-button
+                        mwlCalendarNextView
+                        [view]="view"
+                        [(viewDate)]="viewDate"
+                        aria-label="Next">
+                    <md-icon>chevron_right</md-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div at-layout-content [ngClass.gt-sm]="'at-p-40'">
+        <div [ngSwitch]="view">
+            <mwl-calendar-month-view
+                    *ngSwitchCase="'month'"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    (dayClicked)="dayClicked($event.day)"
+                    (eventClicked)="handleEvent('edit', $event.event)"
+                    (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-month-view>
+            <mwl-calendar-week-view
+                    *ngSwitchCase="'week'"
+                    [viewDate]="viewDate"
+                    (viewDateChange)="selectedDay = {date:$event}"
+                    [events]="events"
+                    [refresh]="refresh"
+                    (dayClicked)="dayClicked($event.day)"
+                    (eventClicked)="handleEvent('edit', $event.event)"
+                    (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-week-view>
+            <mwl-calendar-day-view
+                    *ngSwitchCase="'day'"
+                    [viewDate]="viewDate"
+                    (viewDateChange)="selectedDay = {date:$event}"
+                    [events]="events"
+                    [refresh]="refresh"
+                    (dayClicked)="dayClicked($event.day)"
+                    (eventClicked)="handleEvent('edit', $event.event)"
+                    (eventTimesChanged)="eventTimesChanged($event)">
+            </mwl-calendar-day-view>
+        </div>
+    </div>
+
+</at-layout>
+
+
+

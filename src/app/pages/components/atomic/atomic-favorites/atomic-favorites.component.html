@@ -1,0 +1,114 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtFavorites</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">A component to show a list of favorites links.</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtFavorites Example</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20">
+                    <md-toolbar>
+                        <at-favorites [avFavorites]="['/dashboards/dashboard1']"
+                                              (avFavoritesChange)="onAtFavoritesChange($event)" class="at-ml-15"
+                                              fxHide="true"
+                                              fxHide.gt-sm="false"></at-favorites>
+                    </md-toolbar>
+
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use AtFavorites Component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtFavoritesModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.module.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtFavoritesModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtFavoritesModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <h3 class="at-mt-40">Usage</h3>
+                    <p>Place <code>at-favorites</code> whatever you want in <code>your.component.html</code> preferably inside <code>md-toolbar</code> component.</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <at-favorites [avFavorites]="['/dashboards/dashboard1']"
+                                              (avFavoritesChange)="onAtFavoritesChange($event)"
+                                              class="at-ml-15"
+                                              fxHide="true"
+                                              fxHide.gt-sm="false"></at-favorites>
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div fxLayout="column">
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import {Component} from '@angular/core';
+                                ...
+
+                                export class MyComponent {
+
+                                    constructor() {
+
+                                    }
+
+                                    onAtFavoritesChange(favorites) {
+                                        console.log(favorites)
+                                    }
+                                }
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

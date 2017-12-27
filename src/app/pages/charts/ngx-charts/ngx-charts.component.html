@@ -1,0 +1,107 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="teal-800" pattern="pattern-1" class="at-ph-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>NGX-Charts</span>
+            <span fxFlex></span>
+            <a href="https://swimlane.gitbooks.io/ngx-charts/content/intro/installing.html" target="_blank"
+               md-icon-button
+               md-tooltip="Documentation">
+                <md-icon>launch</md-icon>
+            </a>
+        </h1>
+        <h4 class="at-mb-5 at-tw-400 mat-fg-white">Declarative Charting Framework for Angular 4+!</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-10" ngClass.gt-sm="at-pv-40 at-ph-80">
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutWrap>
+            <div fxFlex.gt-sm="50">
+                <md-card class="at-m-10 at-no-p">
+                    <md-toolbar class="at-toolbar at-toolbar-transparent">Gauge</md-toolbar>
+                    <md-divider></md-divider>
+                    <md-card-content class="at-h-400">
+                        <div class="at-h-40"></div>
+                        <ngx-charts-gauge
+                                [scheme]="colorScheme"
+                                [results]="single"
+                                [min]="0"
+                                [max]="100"
+                                [units]="'usage'"
+                                [bigSegments]="10"
+                                [smallSegments]="5">
+                        </ngx-charts-gauge>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div fxFlex.gt-sm="50">
+                <md-card class="at-m-10 at-no-p">
+                    <md-toolbar class="at-toolbar at-toolbar-transparent">Stacked Horizontal Bars</md-toolbar>
+                    <md-divider></md-divider>
+                    <md-card-content class="at-h-400">
+                        <div class="at-h-10"></div>
+                        <ngx-charts-bar-horizontal-stacked
+                                [scheme]="colorScheme"
+                                [results]="multi"
+                                [gradient]="gradient"
+                                [xAxis]="showXAxis"
+                                [yAxis]="showYAxis"
+                                [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxisLabel]="xAxisLabel">
+                        </ngx-charts-bar-horizontal-stacked>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div fxFlex.gt-sm="50">
+                <md-card class="at-m-10 at-no-p">
+                    <md-toolbar class="at-toolbar at-toolbar-transparent">Vertical Grouped Bars</md-toolbar>
+                    <md-divider></md-divider>
+                    <md-card-content class="at-h-400">
+                        <div class="at-h-10"></div>
+                        <ngx-charts-bar-vertical-2d class="at-pt-10"
+                                [scheme]="colorScheme"
+                                [results]="multi"
+                                [gradient]="gradient"
+                                [xAxis]="showXAxis"
+                                [yAxis]="showYAxis"
+                                [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxisLabel]="xAxisLabel"
+                                [yAxisLabel]="yAxisLabel"
+                                [barPadding]="2"
+                                [groupPadding]="8">
+                        </ngx-charts-bar-vertical-2d>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div fxFlex.gt-sm="50">
+                <md-card class="at-m-10 at-no-p">
+                    <md-toolbar class="at-toolbar at-toolbar-transparent">Lines</md-toolbar>
+                    <md-divider></md-divider>
+                    <md-card-content class="at-h-400">
+                        <div class="at-h-10"></div>
+                        <ngx-charts-line-chart
+                                [scheme]="colorScheme"
+                                [results]="multi"
+                                [gradient]="gradient"
+                                [xAxis]="showXAxis"
+                                [yAxis]="showYAxis"
+                                [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxisLabel]="xAxisLabel"
+                                [yAxisLabel]="yAxisLabel"
+                                [autoScale]="autoScale">
+                        </ngx-charts-line-chart>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+
+    </div>
+
+</at-layout>

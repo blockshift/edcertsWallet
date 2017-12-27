@@ -1,0 +1,66 @@
+<at-scrollbar class="at-hp-100">
+    <div ngClass="at-p-5" ngClass.gt-sm="at-p-40">
+        <md-card class="at-p-0">
+            <md-toolbar color="primary">
+                <h4 fxFlex>Border Helpers</h4>
+            </md-toolbar>
+            <md-card-content class="at-p-20" fxLayout="column">
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-border<br>.at-b</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set border="1px solid rgba(0, 0, 0, 0.12)"
+                        style to an element</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-border"></div>
+                            <div class="at-b"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-border-[direction]<br>.at-b[dir]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set border-[direction]="1px solid rgba(0, 0, 0, 0.12)"
+                        style to an element.<br>
+                        <code>direction = top | left | right | bottom | horizontal | vertical</code><br>
+                        <code>dir = t | l | r | b | h | v</code><br></p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-overflow-hidden"></div>
+                            <div class="at-oh"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+                <md-divider class="at-mb-20"></md-divider>
+
+                <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center">
+                    <h3 fxFlex.gt-xs="20" class="at-p-20">
+                        <code>.at-border-radius-[x]<br>.at-brad-[x]</code>
+                    </h3>
+                    <p fxFlex.gt-xs="40" class="at-tz-xl at-p-20">Set border-radius="[x]px" style to an element. Where x
+                        goes from 1 to 12</p>
+                    <div fxFlex.gt-xs="40">
+                        <td-highlight lang="html">
+                            <![CDATA[
+                            <div class="at-border-radius-1"></div>
+                            <div class="at-brad-2"></div>
+                            ...
+                            <div class="at-border-radius-16"></div>
+                            ]]>
+                        </td-highlight>
+                    </div>
+                </div>
+
+            </md-card-content>
+        </md-card>
+        <br><br>
+    </div>
+</at-scrollbar>

@@ -1,0 +1,43 @@
+<at-layout #layoutSimple
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="brown-700" pattern="pattern-1" class="at-padding-horizontal-40">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white">
+                <span>Icons</span>
+            </h1>
+            <div fxFlex></div>
+            <at-search-box backIcon="arrow_back"
+                           placeholder="Search Icon"
+                           [showUnderline]="false"
+                           [alwaysVisible]="false"
+                           (searchDebounce)="searchIcon($event)"
+                           (clear)="''"
+                           class="at-mt-10 mat-fg-white">
+            </at-search-box>
+            <a href="https://material.io/guidelines/style/icons.html" target="_blank"
+               md-icon-button
+               md-tooltip="Icons Specs"
+               class="mat-fg-white at-mt-10">
+                <md-icon>launch</md-icon>
+            </a>
+        </div>
+        <h4 class="at-mb-5 at-tw-400 mat-fg-white">{{mdIcons.length}} material system icons</h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-10" ngClass.gt-sm="at-pv-40 at-ph-80">
+        <md-grid-list [cols]="columns">
+            <md-grid-tile *ngFor="let icon of filteredIcons">
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <md-icon class="mat-fg-grey-600" style="font-size: 50px; width: 50px; height: 50px">{{icon.class}}
+                    </md-icon>
+                    <label class="at-mt-20">{{icon.class}}</label>
+                </div>
+            </md-grid-tile>
+
+        </md-grid-list>
+        <pre></pre>
+    </div>
+
+</at-layout>

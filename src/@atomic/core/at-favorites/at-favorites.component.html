@@ -1,0 +1,52 @@
+<!--Displaying Favorites AtSidenavItems-->
+<div class="at-favorites-container" fxLayout="row" fxLayoutAlign="start center">
+    <div [sortablejs]="currentAtFavorites" [sortablejsOptions]="sortableOptions" fxLayout="row">
+        <!-- remove mdTooltip from button to enable drag & drop -->
+        <button *ngFor="let avFavorite of currentAtFavorites" type="button" md-icon-button fxLayout="row" fxLayoutAlign="center center"
+                [routerLink]="[avFavorite.route]"
+                [mdTooltip]="avFavorite.name" mdTooltipPosition="below">
+            <md-icon *ngIf="avFavorite.icon">{{ avFavorite.icon }}</md-icon>
+            <at-icon *ngIf="!avFavorite.icon"
+                     [name]="avFavorite.name" type="letter"></at-icon>
+        </button>
+    </div>
+    <button class="add-favorite" type="button" md-icon-button
+            mdTooltip="Add/Remove favorites" mdTooltipPosition="below"
+            [mdMenuTriggerFor]="favoriteMenu" (onMenuClose)="clearSearchInput()">
+        <md-icon>star</md-icon>
+    </button>
+</div>
+<!--Displaying Favorites AtSidenavItems-->
+
+<!--Displaying Filtered AtSidenavItems-->
+<md-menu #favoriteMenu="mdMenu" [overlapTrigger]="false" xPosition=after yPosition="below">
+    <div class="at-favorite-menu" (click)="$event.stopPropagation()">
+        <div class="at-favorite-search" fxLayout="row">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <md-icon>search</md-icon>
+            </div>
+            <input [ngModel]="avFavSearchValue"
+                   (ngModelChange)="onAtFavSearchValueChanged($event)"
+                   class="at-favorite-search-input" type="search" placeholder="Search...">
+        </div>
+        <md-divider></md-divider>
+        <at-scrollbar class="at-favorite-results">
+            <button *ngFor="let avFavFilteredItem of avFavFilteredItems"
+                    (click)="toggleAtFavorite(avFavFilteredItem)"
+                    md-menu-item fxLayout="row" fxLayoutAlign="start center">
+                <ng-container *ngIf="avFavFilteredItem.icon">
+                    <md-icon>{{ avFavFilteredItem.icon }}</md-icon>
+                </ng-container>
+                <at-icon class="at-mr-16" *ngIf="!avFavFilteredItem.icon"
+                         [name]="avFavFilteredItem.name" type="letter" backgroundType="solid"></at-icon>
+
+                <span>{{ avFavFilteredItem.name }}</span>
+                <span fxFlex></span>
+                <!--<md-icon>pin</md-icon>-->
+                <md-icon *ngIf="isAtFavorite(avFavFilteredItem)">radio_button_checked</md-icon>
+                <md-icon *ngIf="!isAtFavorite(avFavFilteredItem)">radio_button_unchecked</md-icon>
+            </button>
+        </at-scrollbar>
+    </div>
+</md-menu>
+<!--/Displaying Filtered AtSidenavItems-->

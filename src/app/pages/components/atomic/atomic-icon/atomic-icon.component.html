@@ -1,0 +1,114 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800" pattern="pattern-1" class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtIcon</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">Makes it easier to use material design icons in your app.</h4>
+    </div>
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <p>Use AtIcon component when you need to show an icon box.</p>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtIcon letter Example</h4>
+                </md-toolbar>
+                <md-card-content fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap class="at-p-20">
+                    <at-icon *ngFor="let letter of alphabet" class="at-m-5"
+                             [name]="letter"
+                             [type]="'letter'"
+                             [backgroundType]="'solid'"
+                             [size]="'80px'"
+                             [fontSize]="'30px'">
+                    </at-icon>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtIcon md-icon Example</h4>
+                </md-toolbar>
+                <md-card-content fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap class="at-p-20">
+                    <at-icon *ngFor="let icon of randomIcons" class="at-m-5"
+                             [name]="icon.class"
+                             [backgroundType]="'border'"
+                             [size]="'80px'"
+                             [fontSize]="'30px'">dashboard
+                    </at-icon>
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div fxLayout="column">
+                    <h2>How to use this component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtIconModule]</code> in your NgModule:</p>
+
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtIconModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtIconModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+
+                    <br>
+                    <h3>Usage</h3>
+                    <p>Just add the directive wherever you want into your html:</p>
+
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                ...
+                                <!--Renders a material design icon-->
+                                <at-icon type="mdicon">dashboard</at-icon>
+
+                                <!--Renders a 'T' icon with a red border-->
+                                <at-icon type="letter" backgroundColor="red" backgroundType="border">test</at-icon>
+
+                                <!--Use property name inside *ngFor loops -->
+                                <at-icon *ngFor="let letter of alphabet" class="at-m-5"
+                                         [name]="letter"
+                                         [type]="'letter'"
+                                         [backgroundType]="'solid'"
+                                         [size]="'80px'"
+                                         [fontSize]="'30px'">
+                                </at-icon>
+                                ...
+                                ]]>
+                            </td-highlight>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</at-layout>

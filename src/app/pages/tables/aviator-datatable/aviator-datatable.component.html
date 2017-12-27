@@ -1,0 +1,62 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="grey-700" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>Atomic DataTable</span>
+            </h1>
+            <h4 class="at-mb-5 at-tw-500 mat-fg-white">Display sets of raw data.</h4>
+        </div>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <md-card class="at-p-0">
+                <md-toolbar color="primary" class="at-bb">
+                    <h4>Nutrition Facts</h4>
+                    <span fxFlex></span>
+                    <at-search-box #searchBox
+                                   backIcon="arrow_back"
+                                   class="push-right-sm"
+                                   placeholder="Search here"
+                                   (searchDebounce)="search($event)" fxFlex>
+                    </at-search-box>
+                    <button md-icon-button>
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                </md-toolbar>
+                <md-card-content fxLayout="column">
+                    <at-data-table
+                            #dataTable
+                            [data]="filteredData"
+                            [columns]="columns"
+                            [selectable]="selectable"
+                            [clickable]="clickable"
+                            [multiple]="multiple"
+                            [sortable]="true"
+                            [sortBy]="sortBy"
+                            [(ngModel)]="selectedRows"
+                            [sortOrder]="sortOrder"
+                            (sortChange)="sort($event)"
+                            (rowClick)="showAlert($event)">
+                    </at-data-table>
+                    <div class="md-padding" *ngIf="!dataTable.hasData" fxLayout="row" fxLayoutAlign="center center">
+                        <h3>No results to display.</h3>
+                    </div>
+                    <div class="mat-bg-grey-100 at-p-10 at-bt">
+                        <at-paging-bar #pagingBar [pageSize]="pageSize" [total]="filteredTotal" (change)="page($event)">
+                            <span hide-xs>Rows per page:</span>
+                            <md-select [style.width.px]="50" [(ngModel)]="pageSize">
+                                <md-option *ngFor="let size of [5,10,15,20]" [value]="size">
+                                    {{size}}
+                                </md-option>
+                            </md-select>
+                            {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                        </at-paging-bar>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</at-layout>

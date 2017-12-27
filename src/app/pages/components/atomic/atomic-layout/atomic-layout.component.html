@@ -1,0 +1,194 @@
+<at-layout #simpleLayoutMain
+           [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="deep-orange-800"
+         pattern="pattern-1"
+         class="at-padding-horizontal-40">
+        <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+            <span>AtLayout</span>
+        </h1>
+        <h4 class="at-mb-5 mat-fg-white">
+            <span>An easy way to build material Layouts.</span>
+            <span fxHide="true" fxHide.gt-sm="false">Use it to build Main, Simple, Carded and tabbed Layouts.</span>
+        </h4>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <h2>Example</h2>
+            <md-card class="at-p-0">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtLayout Simple Example</h4>
+                </md-toolbar>
+                <md-card-content>
+
+                    <at-layout #simpleLayout
+                               [layoutType]="'simple'"
+                               scrollOn="container">
+
+                        <div at-layout-header [componentRef]="simpleLayout" color="blue-800" pattern="pattern-1">
+                            <div class="at-padding-horizontal-40">
+                                <h1 class="at-mb-5 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                                    <span>Simple Layout Header</span>
+                                </h1>
+                                <h4 class="at-mb-5 mat-fg-white">Some description</h4>
+                                <p>
+                                    <button md-button (click)="simpleLayout.toggleSideBarLeft()">Toggle left Sidebar
+                                    </button>
+                                    <button md-button (click)="simpleLayout.toggleSideBarRight()">Toggle right Sidebar
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div at-layout-sidebar-left [componentRef]="simpleLayout" [showAtScrollbar]="false">
+                            <div class="at-m-10">Simple Left Sidebar</div>
+                        </div>
+
+                        <div at-layout-sidebar-right [componentRef]="simpleLayout" [showAtScrollbar]="false">
+                            <div class="at-m-10">Simple Right Sidebar</div>
+                        </div>
+
+                        <div at-layout-content [showAtScrollbar]="false">
+                            <div class="mat-bg-blue-grey-100">
+                                <div class="at-pt-60 at-pb-60 at-pl-20 at-pr-20">The Content</div>
+                            </div>
+                        </div>
+                    </at-layout>
+
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary">
+                    <h4 fxFlex>AtLayout Carded Example</h4>
+                </md-toolbar>
+                <md-card-content>
+
+                    <at-layout #cardedLayout
+                               [layoutType]="'carded'"
+                               scrollOn="container">
+
+                        <div at-layout-header [componentRef]="cardedLayout" color="orange-700" pattern="pattern-3">
+                            <div class="at-padding-horizontal-40">
+                                <h1 class="at-mb-5 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                                    <span>Carded Layout Header</span>
+                                </h1>
+                                <h4 class="at-mb-5 mat-fg-white">Some description</h4>
+                                <p>
+                                    <button md-button (click)="cardedLayout.toggleSideBarLeft()">Toggle left Sidebar
+                                    </button>
+                                    <button md-button (click)="cardedLayout.toggleSideBarRight()">Toggle right Sidebar
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div at-layout-sidebar-left [componentRef]="cardedLayout" [showAtScrollbar]="false">
+                            <div class="at-m-10">Carded Left Sidebar</div>
+                        </div>
+
+                        <div at-layout-sidebar-right [componentRef]="cardedLayout" [showAtScrollbar]="false">
+                            <div class="at-m-10">Carded Right Sidebar</div>
+                        </div>
+
+                        <div at-layout-content [showAtScrollbar]="false">
+                            <div>
+                                <div class="at-pt-60 at-pb-60 at-pl-20 at-pr-20">The Content</div>
+                            </div>
+                        </div>
+                    </at-layout>
+
+                </md-card-content>
+            </md-card>
+
+            <div id="doc" class="at-mt-20">
+                <div>
+                    <h2>How to use avLayout component</h2>
+
+                    <h3>Setup</h3>
+                    <p>Import the <code>[AtLAyoutModule]</code> in your NgModule:</p>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">mymodule.ts</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="typescript">
+                                <![CDATA[
+                                import { AtLayoutModule } from '@aviator/core';
+
+                                @NgModule({
+                                    imports: [
+                                        AtLayoutModule,
+                                        ...
+                                    ],
+                                    ...
+                                })
+                                export class MyModule {}
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+
+                    <br>
+                    <h3>Usage</h3>
+                    <md-card class="at-p-0 at-m-20">
+                        <div fxLayoutAlign="start center" class="at-p-10">
+                            <at-icon class="at-mr-10" name="code"
+                                     backgroundColor="blue-grey" fontSize="24px"></at-icon>
+                            <h5 fxFlex class="at-mb-0">my.component.html</h5>
+                        </div>
+                        <md-card-content>
+                            <td-highlight lang="html">
+                                <![CDATA[
+                                <at-layout #simpleLayout
+                                           [layoutType]="'simple'"
+                                           scrollOn="container">
+
+                                    <div at-layout-header [componentRef]="simpleLayout" color="blue-800" pattern="pattern-1">
+                                        <div class="at-padding-horizontal-40">
+                                            <h1 class="at-mb-5 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                                                <span>Simple Layout Header</span>
+                                            </h1>
+                                            <h4 class="at-mb-5 mat-fg-white">Some description</h4>
+                                            <p>
+                                                <button md-button (click)="simpleLayout.toggleSideBarLeft()">
+                                                    Toggle left Sidebar
+                                                </button>
+                                                <button md-button (click)="simpleLayout.toggleSideBarRight()">
+                                                    Toggle right Sidebar
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div at-layout-sidebar-left [componentRef]="simpleLayout" [showAtScrollbar]="false">
+                                        <div class="at-m-10">Simple Left Sidebar</div>
+                                    </div>
+
+                                    <div at-layout-sidebar-right [componentRef]="simpleLayout" [showAtScrollbar]="false">
+                                        <div class="at-m-10">Simple Right Sidebar</div>
+                                    </div>
+
+                                    <div at-layout-content [showAtScrollbar]="false">
+                                        <div class="mat-bg-blue-grey-100">
+                                            <div class="at-pt-60 at-pb-60 at-pl-20 at-pr-20">The Content</div>
+                                        </div>
+                                    </div>
+                                </at-layout>
+                                ]]>
+                            </td-highlight>
+                            <br>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</at-layout>

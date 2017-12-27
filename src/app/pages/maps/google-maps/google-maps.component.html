@@ -1,0 +1,97 @@
+<at-layout [layoutType]="'simple'"
+           scrollOn="content">
+
+    <div at-layout-header color="light-blue-800" pattern="pattern-1">
+        <div class="at-padding-horizontal-40">
+            <h1 class="at-mb-5 at-tw-300 at-tz-35 mat-fg-white" fxLayout="row" fxLayoutAlign="start center">
+                <span>Google Maps</span>
+                <span fxFlex></span>
+                <a href="https://angular-maps.com/" target="_blank"
+                   md-icon-button
+                   md-tooltip="Documentation"
+                   class="mat-fg-white at-mt-10">
+                    <md-icon>launch</md-icon>
+                </a>
+            </h1>
+            <h4 class="at-mb-5 at-tw-400 mat-fg-white">Agular 4+ Components for Google Maps</h4>
+        </div>
+    </div>
+
+    <div at-layout-content ngClass="at-padding-5" ngClass.gt-xs="at-padding-40">
+        <div fxLayout="column">
+            <md-card class="at-p-0">
+                <md-toolbar color="primary" class="at-bb">
+                    <h4>Markers</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20 at-h-500" fxLayout="column" >
+                    <agm-map *ngIf="gmapsApiKey" class="at-hp-100 at-wp-100"
+                             [latitude]="lat"
+                             [longitude]="lng"
+                             [zoom]="zoom"
+                             [disableDefaultUI]="false"
+                             [fullscreenControl]="true"
+                             [scaleControl]="true"
+                             [scrollwheel]="false"
+                             (mapClick)="mapClicked($event)">
+
+                        <agm-marker
+                                *ngFor="let m of markers; let i = index"
+                                (markerClick)="clickedMarker(m.label, i)"
+                                [latitude]="m.lat"
+                                [longitude]="m.lng"
+                                [label]="m.label"
+                                [markerDraggable]="m.draggable"
+                                (dragEnd)="markerDragEnd(m, $event)">
+
+                            <agm-info-window>
+                                <strong>InfoWindow content</strong>
+                            </agm-info-window>
+
+                        </agm-marker>
+
+                    </agm-map>
+                    <div *ngIf="!gmapsApiKey" class="at-hp-100" fxLayout="column"
+                         [class.mat-bg-grey-300]="!gmapsApiKey" fxLayoutAlign="center center">
+                        <md-icon class="at-tz-50 mat-fg-grey-600">info</md-icon>
+                        <br><br>
+                        <h1 class="mat-display-1 mat-fg-grey-600">Google Maps require an API key</h1>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <md-card class="at-p-0 at-mt-20">
+                <md-toolbar color="primary" class="at-bb">
+                    <h4>Draw Area</h4>
+                </md-toolbar>
+                <md-card-content class="at-p-20 at-h-500" fxLayout="column">
+                    <agm-map *ngIf="gmapsApiKey" class="at-hp-100 at-wp-100"
+                             [latitude]="lat"
+                             [longitude]="lng"
+                             [zoom]="zoom"
+                             [disableDefaultUI]="false"
+                             [zoomControl]="false"
+                             (mapClick)="mapClicked($event)">
+
+
+                        <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+                                    [radius]="50000"
+                                    [fillColor]="'red'"
+                                    [circleDraggable]="true"
+                                    [editable]="true">
+                        </agm-circle>
+
+                    </agm-map>
+                    <div *ngIf="!gmapsApiKey" class="at-hp-100" fxLayout="column"
+                         [class.mat-bg-grey-300]="!gmapsApiKey" fxLayoutAlign="center center">
+                        <md-icon class="at-tz-50 mat-fg-grey-600">info</md-icon>
+                        <br><br>
+                        <h1 class="mat-display-1 mat-fg-grey-600">Google Maps require an API key</h1>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</at-layout>
+
+
+
