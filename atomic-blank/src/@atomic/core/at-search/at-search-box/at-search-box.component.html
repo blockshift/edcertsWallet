@@ -1,0 +1,15 @@
+<div class="at-search-box" fxLayout="row" fxLayoutAlign="end center">
+    <button md-icon-button type="button" class="at-search-icon" fxFlex="none" (click)="searchClicked()">
+        <md-icon *ngIf="searchVisible && !alwaysVisible">{{backIcon}}</md-icon>
+        <md-icon *ngIf="!searchVisible || alwaysVisible">search</md-icon>
+    </button>
+    <at-search-input #searchInput
+                     [@inputState]="alwaysVisible || searchVisible"
+                     [debounce]="debounce"
+                     [showUnderline]="showUnderline"
+                     [placeholder]="placeholder"
+                     (searchDebounce)="handleSearchDebounce($event)"
+                     (search)="handleSearch($event)"
+                     (clear)="handleClear(); toggleVisibility()">
+    </at-search-input>
+</div>

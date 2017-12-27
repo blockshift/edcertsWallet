@@ -1,0 +1,90 @@
+$av-notification-size: 20px !default;
+$av-notification-content-size: 40px !default;
+
+:host {
+  position: relative;
+  display: block;
+  text-align: center;
+  min-width: $av-notification-content-size;
+  height: $av-notification-content-size;
+  &.at-notification-hidden {
+    min-width: 0;
+  }
+}
+
+.at-notification-count {
+  line-height: $av-notification-size + 1;
+  width: $av-notification-size;
+  height: $av-notification-size;
+  position: absolute;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  z-index: 1;
+  &.at-notification-center-x {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px
+  }
+  &.at-notification-center-y {
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0px;
+    bottom: 0px;
+  }
+  &.at-notification-top {
+    top: 0px;
+  }
+  &.at-notification-bottom {
+    bottom: 0px;
+  }
+  &.at-notification-before {
+    left: 0px
+  }
+  &.at-notification-after {
+    right: 0px;
+  }
+  &.at-notification-no-count {
+    width: 8px;
+    height: 8px;
+    &.at-notification-top {
+      top: 8px;
+    }
+    &.at-notification-bottom {
+      bottom: 8px;
+    }
+    &.at-notification-before {
+      left: 8px;
+    }
+    &.at-notification-after {
+      right: 8px;
+    }
+  }
+  /deep/ [dir='rtl'] & {
+    &.at-notification-before {
+      right: 0px;
+      left: auto;
+    }
+    &.at-notification-after {
+      left: 0px;
+      right: auto;
+    }
+    &.at-notification-no-count {
+      &.at-notification-before {
+        right: 8px;
+        left: auto;
+      }
+      &.at-notification-after {
+        left: 8px;
+        right: auto;
+      }
+    }
+  }
+}
+
+.at-notification-content {
+  &, /deep/ > * {
+    line-height: $av-notification-content-size;
+  }
+}

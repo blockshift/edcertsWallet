@@ -1,0 +1,19 @@
+<div class="at-search-input" fxLayout="row" fxLayoutAlign="end center">
+    <md-input-container [class.mat-hide-underline]="!showUnderline" floatPlaceholder="never" fxFlex>
+        <input mdInput
+               #searchElement
+               type="search"
+               [(ngModel)]="value"
+               [placeholder]="placeholder"
+               (blur)="handleBlur()"
+               (search)="stopPropagation($event)"
+               (keyup.enter)="handleSearch($event)"/>
+    </md-input-container>
+    <button md-icon-button
+            type="button"
+            [@searchState]="(searchElement.value ?  'show' : (isRTL ? 'hide-left' : 'hide-right'))"
+            (click)="clearSearch()"
+            fxFlex="none">
+        <md-icon>cancel</md-icon>
+    </button>
+</div>

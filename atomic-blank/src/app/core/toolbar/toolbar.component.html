@@ -1,0 +1,34 @@
+<md-toolbar color="primary"
+            class="at-main-toolbar mat-elevation-z1">
+    <div fxHide="false" fxHide.gt-sm>
+        <button (click)="layoutRef.toggleSideNav()" md-icon-button>
+            <md-icon>menu</md-icon>
+        </button>
+    </div>
+
+    <div fxFlex></div>
+
+    <div class="user-button-container" #userButton>
+        <button class="user-button" md-button [mdMenuTriggerFor]="menu">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <img src="https://randomuser.me/api/portraits/thumb/women/40.jpg" class="avatar-flex">
+                <span class="name" fxHide="true" fxHide.gt-sm="false">Wilma Arndt</span>
+                <md-icon fxHide="true" fxHide.gt-sm="false">keyboard_arrow_down</md-icon>
+            </div>
+        </button>
+    </div>
+</md-toolbar>
+
+<md-menu class="user-menu" yPosition="below" [overlapTrigger]="false" #menu="mdMenu">
+    <div class="user-menu-inner" [style.min-width]="userButtonWidth">
+        <button md-menu-item [routerLink]="['/profile']">
+            <md-icon>account_circle</md-icon>
+            <span>Profile</span>
+        </button>
+        <md-divider></md-divider>
+        <button md-menu-item>
+            <md-icon>exit_to_app</md-icon>
+            <span>Logout</span>
+        </button>
+    </div>
+</md-menu>

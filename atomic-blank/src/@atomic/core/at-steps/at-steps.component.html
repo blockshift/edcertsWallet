@@ -1,0 +1,46 @@
+<div *ngIf="isHorizontal()" class="at-steps-header" fxLayout="row" title>
+    <ng-template let-step let-index="index" let-last="last" ngFor [ngForOf]="steps">
+        <at-step-header class="at-step-horizontal-header"
+                        (keydown.enter)="step.toggle()"
+                        [number]="index + 1"
+                        [active]="step.active"
+                        [disableRipple]="step.disableRipple"
+                        [disabled]="step.disabled"
+                        [state]="step.state"
+                        (click)="step.toggle()">
+            <ng-template at-step-header-label [cdkPortalHost]="step.stepLabel"></ng-template>
+            <ng-template at-step-header-label [ngIf]="!step.stepLabel">{{step.label}}</ng-template>
+            <ng-template at-step-header-sublabel [ngIf]="true">{{step.sublabel | truncate:30}}</ng-template>
+        </at-step-header>
+        <span *ngIf="!last" class="at-horizontal-line" fxFlex></span>
+    </ng-template>
+</div>
+<div *ngFor="let step of steps; let index = index; let last = last"
+     class="at-step"
+     fxLayout="column">
+    <at-step-header class="at-step-vertical-header"
+                    (keydown.enter)="step.toggle()"
+                    [number]="index + 1"
+                    [active]="step.active"
+                    [disabled]="step.disabled"
+                    [disableRipple]="step.disableRipple"
+                    [state]="step.state"
+                    (click)="step.toggle()"
+                    *ngIf="isVertical()">
+        <ng-template at-step-header-label [cdkPortalHost]="step.stepLabel"></ng-template>
+        <ng-template at-step-header-label [ngIf]="!step.stepLabel">{{step.label}}</ng-template>
+        <ng-template at-step-header-sublabel [ngIf]="true">{{step.sublabel}}</ng-template>
+    </at-step-header>
+
+    <ng-template [ngIf]="isVertical() || step.active || (!areStepsActive() && prevStep === step)">
+        <at-step-body [active]="step.active" [state]="step.state">
+            <div *ngIf="isVertical()" class="at-line-wrapper" fxFlex="24px">
+                <div *ngIf="!last" class="at-vertical-line"></div>
+            </div>
+            <md-divider *ngIf="!isVertical()"></md-divider>
+            <ng-template at-step-body-content [cdkPortalHost]="step.stepContent"></ng-template>
+            <ng-template at-step-body-actions [cdkPortalHost]="step.stepActions"></ng-template>
+            <ng-template at-step-body-summary [cdkPortalHost]="step.stepSummary"></ng-template>
+        </at-step-body>
+    </ng-template>
+</div>

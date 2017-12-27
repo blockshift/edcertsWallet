@@ -1,0 +1,55 @@
+<div class="at-theme-light mat-bg-white at-absolute at-wp-100 at-hp-100" fxFlex>
+    <img src="assets/img/backgrounds/material/google.svg"
+         class="at-wp-100 at-hp-100 at-fixed">
+
+    <div fxFlexFill
+         fxLayout="column"
+         fxLayoutAlign="center center">
+
+        <md-card id="login-form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <img src="assets/img/at-primary-light-icon.svg" style="margin-left: -10px">
+                <div class="at-ml-20">
+                    <h2 class="at-mt-0">Sign in</h2>
+                    <div>to continue to Atomic</div>
+                </div>
+            </div>
+
+            <br><br>
+            <md-input-container>
+                <input type="email" mdInput placeholder="Email">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput type="password" placeholder="Enter your Password">
+            </md-input-container>
+            <div fxLayout="row" fxLayoutAlign="start center" class="at-mt-10">
+                <md-checkbox>Remember Me</md-checkbox>
+                <span fxFlex></span>
+                <a md-button routerLink="/pages/forgot-pass" class="mat-primary">Forgot Password?</a>
+            </div>
+            <br><br>
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <a md-raised-button color="primary" routerLink="/dashboards">Sign In</a>
+            </div>
+            <br><br>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span>Don't have an account? </span>
+                <span fxFlex></span>
+                <a md-button routerLink="/pages/register" class="mat-primary">Sign Up</a>
+            </div>
+        </md-card>
+
+        <div class="login-footer" fxLayout="row" fxLayoutAlign="start center">
+            <md-select [(ngModel)]="selectedValue" name="food">
+                <md-option *ngFor="let lang of languages" [value]="lang.value">
+                    {{lang.viewValue}}
+                </md-option>
+            </md-select>
+            <span fxFlex></span>
+            <span class="mat-small at-mr-20">Help</span>
+            <span class="mat-small at-mr-20">Privacy</span>
+            <span class="mat-small">Terms</span>
+        </div>
+
+    </div>
+</div>

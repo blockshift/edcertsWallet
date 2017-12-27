@@ -1,0 +1,18 @@
+<div fxLayout="row" fxFlex>
+  <ng-content></ng-content>
+  <div class="at-step-body" fxFlex>
+    <div class="at-step-content-wrapper"
+         [@atCollapse]="!active">
+      <div #contentRef cdkScrollable [class.at-step-content]="contentRef.children.length || contentRef.textContent.trim()">
+        <ng-content select="[at-step-body-content]"></ng-content>
+      </div>
+      <div #actionsRef fxLayout="row" [class.at-step-actions]="actionsRef.children.length || actionsRef.textContent.trim()">
+        <ng-content select="[at-step-body-actions]"></ng-content>
+      </div>
+    </div>
+    <div #summaryRef [@atCollapse]="active || !isComplete()"
+                     [class.at-step-summary]="summaryRef.children.length || summaryRef.textContent.trim()">
+      <ng-content select="[at-step-body-summary]"></ng-content>
+    </div>
+  </div>
+</div>

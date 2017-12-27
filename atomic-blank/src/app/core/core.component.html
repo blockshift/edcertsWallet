@@ -1,0 +1,19 @@
+<at-layout #layoutMain
+           [layoutType]="'main'">
+    <ng-template at-layout-toolbar >
+        <app-toolbar [layoutRef]="layoutMain"></app-toolbar>
+    </ng-template>
+    <ng-template at-layout-sidepanel width="260px">
+        <!--Your content here-->
+    </ng-template>
+    <ng-template at-layout-sidenav
+                 [elevation]="'z7'"
+                 [collapsible]="true">
+        <app-sidenav></app-sidenav>
+    </ng-template>
+    <div at-layout-content>
+        <router-outlet></router-outlet>
+    </div>
+</at-layout>
+
+
