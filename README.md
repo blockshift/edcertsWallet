@@ -3,7 +3,7 @@ Atomic Angular 4+ Material Design Admin Framework
 
 Atomic is a creative material design admin framework built with Angular 4+ and the Angular-CLI. It extends the Material Design components built by the Angular 2 team and it offers you everything you need to get started with your next CRM, CMS or dashboard based project.
 
-## Features
+## Feature
 
 * Clean, Intuitive and Fully Responsive Unique Design (works on all major browsers, tablets and phones)
 * Developer Friendly Code
