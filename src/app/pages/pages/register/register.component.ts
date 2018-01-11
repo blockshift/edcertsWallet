@@ -1,4 +1,10 @@
-import {Component, OnInit, ViewEncapsulation } from '@angular/core';
+//import { Form } from 'app/pages/pages/register/form';
+import { AuthService } from 'app/services/auth.service';
+import { Form } from './form';
+import {Component, OnInit, ViewEncapsulation , Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-register',
@@ -7,17 +13,62 @@ import {Component, OnInit, ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
+loading = false ;
+  //@Input() form : Form ;  ;
+ //@Input()  form : any = {} ;
+    
+   responseStatus:Object= [];
+   status:boolean ;
 
-    selectedValue: string = '1';
+   model: any = {};
+    // @Input() name : any ;
+    // @Input() email :any ;
+    // @Input() password : any ;
+    // @Input() confirmpass : any ;
 
-    languages = [
-        {value: '1', viewValue: 'English (United States)'},
-        {value: '2', viewValue: 'Spanish'}
-    ];
-
-    constructor() {
+    constructor(private http :HttpClient , private router : Router , private auth : AuthService ) {
     }
 
     ngOnInit() {
     }
+
+
+    // onSubmit(form : any) : void {
+    //     console.log("username ", form.name );
+      
+    //   console.log("Password" ,form.password);
+    //   console.log("Confirm Password" ,form.confirmpass);
+    //   console.log("eMAIL" ,form.email);
+    //   console.log (form);
+    
+    // };
+    
+
+register(){
+this.loading  = true ;
+console.log("form value",this.model)
+
+
+  this.auth.create(this.model)
+    .subscribe(
+        data => console.log(this.responseStatus = data),
+        err => console.log(err),
+        () => console.log('Request Completed')
+     ); 
+     this.router.navigate(["login"]);
+     this.status = true;
+     error => {
+        //this.alertService.error(error);
+        this.loading = false;
+    }
+    } 
+
+
+
+        
+        
+
+
 }
+
+

@@ -8,16 +8,16 @@ export const PAGES_ROUTES: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'pages/login',
+        redirectTo: 'pages/forgot-pass',
     },
-    {
-        path: 'pages/login',
-        component: LoginComponent,
-    },
-    {
-        path: 'pages/register',
-        component: RegisterComponent,
-    },
+    // {
+    //     path: 'pages/login',
+    //     component: LoginComponent,
+    // },
+    // {
+    //     path: 'pages/register',
+    //     component: RegisterComponent,
+    // },
     {
         path: 'pages/forgot-pass',
         component: ForgotPassComponent,

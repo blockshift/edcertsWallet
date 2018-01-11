@@ -1,0 +1,40 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "name": "shakoor",
+      "password": 789,
+      "email": "shakoor@xyz.com"
+    },
+    {
+      "id": 2,
+      "name": "ali",
+      "password": 456,
+      "email": "ali@abc.com"
+    },
+    {
+      "id": 3,
+      "name": "adeel",
+      "password": 123,
+      "email": "adeel@abc.com"
+    },
+    {
+      "name": "MUhammad Obaid",
+      "email": "junaid_syed@blockshift.com.pk",
+      "password": "789",
+      "id": 4
+    },
+    {
+      "name": "Syed Atif Ali",
+      "email": "syed_atif@blockshift.com.pk",
+      "password": "12589",
+      "id": 5
+    },
+    {
+      "name": "Muhammad Obaid",
+      "email": "mobaid56@gmail.com",
+      "password": " ",
+      "id": 6
+    }
+  ]
+}

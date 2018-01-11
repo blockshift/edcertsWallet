@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChil
 import {Router} from '@angular/router';
 import {SettingsService} from '../settings/shared/settings';
 import {AtLayoutComponent} from "@atomic/core";
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
     selector: 'app-toolbar',
@@ -9,6 +10,7 @@ import {AtLayoutComponent} from "@atomic/core";
     styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, AfterViewInit {
+
 
     @Input('sidenav') sidenav: any;
     @Input('sidepanel') sidepanel: any;
@@ -24,7 +26,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
 
     activeSettings: any;
 
-    constructor(private router: Router, public settings: SettingsService) {
+    constructor(private router: Router, public settings: SettingsService, private auth :AuthService ) {
         this.activeSettings = settings.active;
     }
 
@@ -42,4 +44,10 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     onAtFavoritesChange(atSidenavItems) {
         // Add your method to save favorites here...
     }
+
+logout(){
+    this.auth.setUserLoggedOut();
+this.router.navigate(['login']);
+}
+
 }

@@ -1,38 +1,37 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CrmComponent} from './crm/crm.component';
+//import {CrmComponent} from './crm/crm.component';
+import { DashboardsComponent } from 'app/pages/dashboards/dashboards.component';
 
 export const DASHBOARD_ROUTES: Routes = [
     {
-        path: 'dashboards',
+        path: 'dashboard',
         pathMatch: 'full',
-        redirectTo: 'dashboards/crm',
-        data: {
-            atSidenavItem: {
-                name: 'Dashboards',
-                icon: 'dashboard',
-                position: 1,
-                badge: 12,
-                badgeColor: 'red',
-                customClass: '',
-            }
-        }
+       
+        redirectTo: 'dashboard',
     },
     {
-        path: 'dashboards/crm',
-        component: CrmComponent,
-        data: {
+        path: 'dashboard',
+        component: DashboardsComponent,
+        data: {  
             atSidenavItem: {
-                name: 'CRM',
+                name: 'Dashboard',
+                icon: 'dashboard',
                 position: 1,
-                customClass: '',
+                //customClass: '',
             }
         },
     },
+
+    
+    
+
+
 ];
 
 export const DASHBOARD_COMPONENTS = [
-    CrmComponent
+   // CrmComponent,
+    DashboardsComponent
 ];
 
 @NgModule({

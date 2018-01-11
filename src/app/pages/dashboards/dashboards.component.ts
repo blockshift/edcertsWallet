@@ -6,11 +6,11 @@ import {AtMediaService} from "@atomic/core";
 
 @Component({
     selector: 'app-crm',
-    templateUrl: './crm.component.html',
-    styleUrls: ['./crm.component.scss'],
+    templateUrl: './dashboards.component.html',
+    styleUrls: ['./dashboards.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class CrmComponent implements OnInit, OnDestroy {
+export class DashboardsComponent implements OnInit, OnDestroy {
     view = [230, 230];
 
     colorScheme = {

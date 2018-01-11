@@ -36,42 +36,42 @@ export class SidenavComponent implements OnInit, AfterViewInit, OnDestroy {
 
             avSidenavService.buildMenuByRoutes(router.config);
 
-            let pages = avSidenavService.addItem(
-                new AtSidenavItem({
-                    name: 'Pages',
-                    icon: 'description',
-                    route: '/pages',
-                    position: 1,
-                }));
+            // let pages = avSidenavService.addItem(
+            //     new AtSidenavItem({
+            //         name: '',
+            //         //icon: 'description',
+            //         route: '/pages',
+            //         position: 1,
+            //     }));
 
-            avSidenavService.addChild(pages, new AtSidenavItem({name: 'Login', route: '/pages/login', position: 1}));
-            avSidenavService.addChild(pages, new AtSidenavItem({
-                name: 'Register',
-                route: '/pages/register',
-                position: 1
-            }));
-            avSidenavService.addChild(pages, new AtSidenavItem({
-                name: 'Forgot Password',
-                route: '/pages/forgot-pass',
-                position: 1
-            }));
+          //  avSidenavService.addChild(pages, new AtSidenavItem({name: 'Login', route: '/pages/login', position: 1}));
+            // avSidenavService.addChild(pages, new AtSidenavItem({
+            //     name: 'Register',
+            //     route: '/pages/register',
+            //     position: 1
+            // }));
+            // avSidenavService.addChild(pages, new AtSidenavItem({
+            //     name: 'Forgot Password',
+            //     route: '/pages/forgot-pass',
+            //     position: 1
+            // }));
 
-            let parent = avSidenavService.addItem(
-                new AtSidenavItem({
-                    name: 'level 1',
-                    icon: 'add',
-                    route: '/l1',
-                    position: 2,
-                }));
+            // let parent = avSidenavService.addItem(
+            //     new AtSidenavItem({
+            //         name: 'level 1',
+            //         icon: 'add',
+            //         route: '/l1',
+            //         position: 2,
+            //     }));
 
-            let child = avSidenavService.addChild(parent, new AtSidenavItem({
-                name: 'level 2',
-                route: '/l2',
-                position: 1
-            }));
-            child = avSidenavService.addChild(child, new AtSidenavItem({name: 'level 3', route: '/l3', position: 1}));
-            child = avSidenavService.addChild(child, new AtSidenavItem({name: 'level 4', route: '/l4', position: 1}));
-            avSidenavService.addChild(child, new AtSidenavItem({name: 'level 5', route: '/l5', position: 1}));
+            // let child = avSidenavService.addChild(parent, new AtSidenavItem({
+            //     name: 'level 2',
+            //     route: '/l2',
+            //     position: 1
+            // }));
+            // child = avSidenavService.addChild(child, new AtSidenavItem({name: 'level 3', route: '/l3', position: 1}));
+            // child = avSidenavService.addChild(child, new AtSidenavItem({name: 'level 4', route: '/l4', position: 1}));
+            // avSidenavService.addChild(child, new AtSidenavItem({name: 'level 5', route: '/l5', position: 1}));
         }
 
 

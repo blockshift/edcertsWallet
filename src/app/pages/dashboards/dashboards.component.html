@@ -5,19 +5,19 @@
     <div at-layout-header [height]="100">
         <div class="at-padding-horizontal-40">
             <h1 class="at-mb-5" fxLayout="row" fxLayoutAlign="start space-around">
-                <span fxFlex>Dashboard</span>
-                <button md-icon-button
+                <!-- <span fxFlex>Dashboard</span> -->
+                <!-- <button md-icon-button
                         [atMediaToggle]="'gt-lg'"
                         [mediaAttributes]="{hidden:true}"
                         (click)="toggleSidenav(true)">
                     <md-icon>format_indent_decrease</md-icon>
-                </button>
+                </button> -->
             </h1>
-            <h4 class="at-mb-5">Welcome to Atomic Dashboard</h4>
+            <h4 class="at-mb-5">Welcome to Your Wallet</h4>
         </div>
     </div>
 
-    <div at-layout-sidebar-right
+    <!-- <div at-layout-sidebar-right
          [width]="'270px'"
          [mode]="isMediumScreen ? 'over' : 'side'"
          [opened]="snOpened"
@@ -108,7 +108,7 @@
                 </div>
             </at-scrollbar>
         </div>
-    </div>
+    </div> -->
 
     <div at-layout-content [ngClass.gt-sm]="'at-p-40'" class="at-hp-100">
 
@@ -210,7 +210,7 @@
             </div>
         </section>
 
-        <section fxLayout="row" fxLayoutWrap class="at-mt-20">
+        <!-- <section fxLayout="row" fxLayoutWrap class="at-mt-20">
             <div fxFlex="100" fxLayout="column" fxFlex.gt-md="50" class="at-ph-10">
                 <md-card class="card-widget at-hp-100">
                     <md-card-title class="at-tz-xl"> Incoming deals</md-card-title>
@@ -296,7 +296,7 @@
                     </md-card-content>
                 </md-card>
             </div>
-        </section>
+        </section> -->
 
         <section fxLayout="column" class="at-mt-20">
             <div class="at-ph-10">
@@ -347,7 +347,7 @@
             </div>
         </section>
 
-        <section fxLayout="row" fxLayoutWrap class="at-mt-20">
+        <!-- <section fxLayout="row" fxLayoutWrap class="at-mt-20">
             <div fxFlex="100" fxLayout="column" fxFlex.gt-md="50" class="at-ph-10">
                 <md-card fxFlex class="card-widget at-hp-100">
                     <md-card-title class="at-tz-xl">Referral URL</md-card-title>
@@ -408,15 +408,16 @@
                     </md-card-content>
                 </md-card>
             </div>
-        </section>
+        </section> -->
 
         <section fxLayout="row" fxLayoutWrap class="at-mt-20">
             <div fxFlex="100" fxFlex.gt-md="50" class="at-ph-10">
                 <md-card fxFlex class="card-widget">
                     <md-card-title>
-                        <h4 class="at-tw-400">Pending deals</h4>
+                        <h4 class="at-tw-400">Announcements</h4>
                         <span fxFlex></span>
-                        <md-icon class="mat-fg-grey-500">more_vert</md-icon>
+                        <span class="badge badge-primary">4</span>
+                       
                     </md-card-title>
                     <md-card-content>
                         <at-scrollbar>
@@ -451,7 +452,7 @@
                     </md-card-content>
                 </md-card>
             </div>
-            <div fxFlex="100" fxFlex.gt-md="50" ngClass="at-mt-20" ngClass.gt-md="at-mt-0" class="at-ph-10">
+            <!-- <div fxFlex="100" fxFlex.gt-md="50" ngClass="at-mt-20" ngClass.gt-md="at-mt-0" class="at-ph-10">
                 <md-card fxFlex class="card-widget">
                     <md-card-title>
                         <h4 class="at-tw-400">My contacts</h4>
@@ -477,7 +478,7 @@
                         </at-scrollbar>
                     </md-card-content>
                 </md-card>
-            </div>
+            </div> -->
         </section>
     </div>
 

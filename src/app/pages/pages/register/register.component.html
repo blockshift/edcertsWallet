@@ -11,37 +11,50 @@
                 <img src="assets/img/at-primary-light-icon.svg" style="margin-left: -10px">
                 <div class="at-ml-20">
                     <h2 class="at-mt-0">Sign Up</h2>
-                    <div>to continue to Atomic</div>
+                    <div>to continue to Student Wallet</div>
                 </div>
             </div>
 
             <br><br>
+
+            <!-- <form class="form-horizontal" #f="ngForm" (ngSubmit)="onSubmit(f.value)" > -->
+                    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
             <md-input-container>
-                <input mdInput placeholder="Name">
+                <input mdInput id="name" [(ngModel)]="model.name" #name="ngModel" name="name"  class="form-control" placeholder="Username" required >
             </md-input-container>
+            <br>
             <md-input-container>
-                <input type="name" mdInput placeholder="Email">
+                <input mdInput type="email"  id="email" [(ngModel)]="model.email" #email="ngModel" name="email"  class="form-control"   placeholder="Email" required >
             </md-input-container>
+            <br>
             <md-input-container>
-                <input mdInput type="password" placeholder="Enter your Password">
+                <input mdInput  type="password" id="password" [(ngModel)]="model.password" #password="ngModel" name="password"  class="form-control"  placeholder="Enter your Password" required >
             </md-input-container>
+            <br>
             <md-input-container>
-                <input mdInput type="password" placeholder="Confirm your Password">
+                <input mdInput type="password"  id="confirmpass" [(ngModel)]="confirmpass" name="confirmpass"   placeholder="Confirm your Password" required>
+                <!-- <small [hidden]="confirmpass.valid ||  
+                (confirmPassword.pristine && !f.submitted)">
+                Password mismatch
+              </small> -->
             </md-input-container>
             <br><br>
             <div fxLayout="row" fxLayoutAlign="end center">
-                <button md-raised-button color="primary">Sign Up</button>
+                <button md-raised-button color="primary" type="submit" >Sign Up</button>
             </div>
+
+            </form>
+
             <br><br>
             <div fxLayout="row" fxLayoutAlign="start center">
                 <span>Do you have an account? </span>
                 <span fxFlex></span>
-                <a md-button routerLink="/pages/login"
+                <a md-button routerLink="/login"
                    class="mat-primary">Sign In</a>
             </div>
         </md-card>
 
-        <div class="login-footer" fxLayout="row" fxLayoutAlign="start center">
+        <!-- <div class="login-footer" fxLayout="row" fxLayoutAlign="start center">
             <md-select [(ngModel)]="selectedValue" name="food">
                 <md-option *ngFor="let lang of languages" [value]="lang.value">
                     {{lang.viewValue}}
@@ -51,7 +64,7 @@
             <span class="mat-small at-mr-20">Help</span>
             <span class="mat-small at-mr-20">Privacy</span>
             <span class="mat-small">Terms</span>
-        </div>
+        </div> -->
 
     </div>
 </div>

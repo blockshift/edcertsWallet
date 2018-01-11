@@ -9,35 +9,35 @@
     <ng-container
             *ngIf="activeSettings.sidenav.headerType !== 'toolbar' && activeSettings.sidenav.headerTypeMix !== 'brand'">
         <img src="assets/img/at-light-icon.svg" class="at-hp-80 at-ml-15">
-        <h5 class="at-mr-15">atomic</h5>
+        <h5 class="at-mr-15">Student Wallet</h5>
     </ng-container>
 
-
+<!-- 
     <at-favorites *ngIf="activeSettings.toolbar.showFavorites"
-                  [avFavorites]="['/dashboards/crm']"
+                  [avFavorites]="['/dashboards']"
                   (avFavoritesChange)="onAtFavoritesChange($event)" class="at-ml-10"
                   fxHide="true"
-                  fxHide.gt-sm="false"></at-favorites>
+                  fxHide.gt-sm="false"></at-favorites> -->
 
     <at-breadcrumbs *ngIf="activeSettings.toolbar.showBreadcrumbs"
                     fxHide="true"
                     fxHide.gt-sm="false"></at-breadcrumbs>
 
 
-    <at-search-box backIcon="arrow_back"
+    <!-- <at-search-box backIcon="arrow_back"
                    placeholder="Search here"
                    fxFlex
                    fxHide="true"
-                   fxHide.gt-sm="false"></at-search-box>
+                   fxHide.gt-sm="false"></at-search-box> -->
     <span fxFlex fxHide="false"
           fxHide.gt-sm="true"></span>
 
-    <button md-icon-button [mdMenuTriggerFor]="notificationsMenu" fxHide="true"
+    <!-- <button md-icon-button [mdMenuTriggerFor]="notificationsMenu" fxHide="true"
             fxHide.gt-sm="false">
         <at-notification-count color="accent" [notifications]="101">
             <md-icon>notifications</md-icon>
         </at-notification-count>
-    </button>
+    </button> -->
     <md-menu #notificationsMenu="mdMenu" [overlapTrigger]="false">
         <div>
             <div fxLayout="row" fxLayoutAlign="center center"
@@ -67,20 +67,20 @@
         </div>
     </md-menu>
 
-    <div class="user-button-container at-ml-15" #userButton>
-        <button class="user-button" md-button [mdMenuTriggerFor]="menu">
+    <div  class="user-button-container at-xl-12" #userButton>
+        <button  class="user-button" md-button [mdMenuTriggerFor]="menu">
             <div fxLayout="row" fxLayoutAlign="start center">
-                <img src="https://randomuser.me/api/portraits/thumb/women/40.jpg" class="avatar-flex">
-                <span class="name" fxHide="true" fxHide.gt-sm="false">Wilma Arndt</span>
+               <img src="https://randomuser.me/api/portraits/thumb/women/40.jpg" class="avatar-flex">
+                <span class="name" fxHide="true" fxHide.gt-sm="false"></span>
                 <md-icon>keyboard_arrow_down</md-icon>
             </div>
         </button>
     </div>
 
-    <button class="at-mr-20 at-ml-15" md-icon-button md-tooltip="Customize"
+    <!-- <button class="at-mr-20 at-ml-15" md-icon-button md-tooltip="Customize"
             (click)="layoutRef.toggleSidePanel()">
         <md-icon>settings</md-icon>
-    </button>
+    </button> -->
 </md-toolbar>
 
 <md-menu class="user-menu" yPosition="below" [overlapTrigger]="false" #menu="mdMenu">
@@ -90,9 +90,9 @@
             <span>Profile</span>
         </button>
         <md-divider></md-divider>
-        <button md-menu-item>
-            <md-icon>exit_to_app</md-icon>
-            <span>Logout</span>
+        <button md-menu-item (click)=logout()>
+         <md-icon>exit_to_app</md-icon>
+       <span> Logout </span>
         </button>
     </div>
 </md-menu>
