@@ -24,7 +24,7 @@ loading = false ;
     // @Input() name : any ;
     // @Input() email :any ;
     // @Input() password : any ;
-    // @Input() confirmpass : any ;
+     @Input() confirmpass : any ;
 
     constructor(private http :HttpClient , private router : Router , private auth : AuthService ) {
     }

@@ -112,10 +112,27 @@
 
     <div at-layout-content [ngClass.gt-sm]="'at-p-40'" class="at-hp-100">
 
+            <section fxLayout="column" class="at-mt-20">
+                    <div class="at-ph-10">
+                        <md-card fxFlex class="card-widget">
+                                <md-card-title class="at-tz-xl">Wallet Address</md-card-title>
+                                <md-card-content fxLayout="row" fxLayoutWrap>
+                                    <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
+                                         fxLayoutAlign="center center">
+                                        
+                                        <h2 class="mat-display-2 mat-fg-light-blue-500 at-mb-3">qa3sx1dc34tg5ij7mn654mn3pok859jhgemn52nbv2</h2>
+                                        
+                                    </div>
+                                   
+                                </md-card-content>
+                            </md-card>
+                    </div>
+                </section>
+<br>
         <section fxLayout="row" fxLayoutWrap>
             <div fxFlex="100" fxFlex.gt-md="38" fxFlex.gt-lg="45" class="at-ph-10">
                 <md-card fxFlex class="card-widget">
-                    <md-card-title class="at-tz-xl">Emails Sent</md-card-title>
+                    <md-card-title class="at-tz-xl">Aproved Applications</md-card-title>
                     <md-card-content fxLayout="column" fxLayout.gt-sm="row">
                         <div fxFlex class="at-h-230" ngClass.="" fxLayout="row" fxLayoutAlign="center center">
                             <ngx-charts-gauge
@@ -128,23 +145,23 @@
                                     [angleSpan]="360"
                                     [startAngle]="0"
                                     [showAxis]="false"
-                                    [units]="'Opened'">
+                                    [units]="'Approved'">
                             </ngx-charts-gauge>
                         </div>
                         <div fxFlex>
                             <div fxLayout="column">
                                 <div fxLayoutAlign="start center">
                                     <md-icon class="mat-fg-purple at-mr-10">lens</md-icon>
-                                    <label>781 Opened</label>
+                                    <label>9 approved </label>
                                 </div>
-                                <div fxLayoutAlign="start center">
+                                <!-- <div fxLayoutAlign="start center">
                                     <md-icon class="mat-fg-grey-600 at-mr-10">lens</md-icon>
                                     <label>89 Unopened</label>
-                                </div>
-                                <br>
+                                </div> -->
+                                <!-- <br>
                                 <md-divider></md-divider>
-                                <br>
-                                <label>900 Sent emails in total</label>
+                                <br> -->
+                                <!-- <label>900 Sent emails in total</label> -->
                             </div>
                         </div>
                     </md-card-content>
@@ -153,262 +170,49 @@
             <div fxFlex="100" class="at-pr-10" ngClass="at-mt-20" ngClass.gt-md="at-mt-0" fxFlex.gt-md="62"
                  fxFlex.gt-lg="55"
                  fxLayout="row" fxLayoutWrap>
-                <div class="at-pl-10" fxFlex.gt-xs="50" fxFlex="100">
-                    <md-card class="card-widget" fxLayout="row" fxLayoutAlign="start center">
-                        <div class="at-p-20">
-                            <at-icon class="at-display-block" backgroundColor="purple" backgroundType="border"
-                                     size="60px" fontSize="30px">
-                                person_add
-                            </at-icon>
-                        </div>
-                        <div fxFlex>
-                            <h2 class="mat-display-2 at-mb-10 at-tw-300 mat-fg-grey-800">12</h2>
-                            <label class="mat-fg-grey-600">New Contacts</label>
-                        </div>
-                    </md-card>
-                </div>
-                <div ngClass.xs="at-pt-20 at-pl-10" ngClass.gt-xs="at-pl-20" fxFlex.gt-xs="50" fxFlex="100">
-                    <md-card class="card-widget" fxLayout="row" fxLayoutAlign="start center">
-                        <div class="at-p-20">
-                            <at-icon backgroundColor="red"
-                                     backgroundType="border" size="60px" fontSize="30px">
-                                account_balance_wallet
-                            </at-icon>
-                        </div>
-                        <div>
-                            <h2 class="mat-display-2 at-mb-10 at-tw-300 mat-fg-grey-800">$4,591</h2>
-                            <label class="mat-fg-grey-600">Won from 16 deals</label>
-                        </div>
-                    </md-card>
-                </div>
-                <div class="at-pl-10 at-pt-20" fxFlex.gt-xs="50" fxFlex="100">
-                    <md-card class="card-widget" fxLayout="row" fxLayoutAlign="start center">
-                        <div class="at-p-20">
-                            <at-icon backgroundColor="blue" backgroundType="border" size="60px" fontSize="30px">
-                                dashboard
-                            </at-icon>
-                        </div>
-                        <div>
-                            <h2 class="mat-display-2 at-mb-10 at-tw-300 mat-fg-grey-800">900</h2>
-                            <label class="mat-fg-grey-600">Campaign email sent</label>
-                        </div>
-                    </md-card>
-                </div>
-                <div ngClass.xs="at-pt-20 at-pl-10" ngClass.gt-xs="at-pt-20 at-pl-20" fxFlex.gt-xs="50" fxFlex="100">
+                 <div ngClass.xs="at-pt-20 at-pl-10" ngClass.gt-xs="at-pt-20 at-pl-20" fxFlex.gt-xs="50" fxFlex="100">
                     <md-card class="card-widget" fxLayout="row" fxLayoutAlign="start center">
                         <div class="at-p-20">
                             <at-icon backgroundColor="green" backgroundType="border" size="60px" fontSize="30px">
-                                chat
+                                receipt
                             </at-icon>
                         </div>
                         <div>
-                            <h2 class="mat-display-2 at-mb-10 at-tw-300 mat-fg-grey-800">42</h2>
-                            <label class="mat-fg-grey-600">New Deals worth $4,951</label>
+                            <h2 class="mat-display-2 at-mb-10 at-tw-300 mat-fg-grey-800">12</h2>
+                            <label class="mat-fg-grey-600">Total Applications</label>
                         </div>
                     </md-card>
                 </div>
+               
+                
+                
+                <div class="at-pl-10 at-pt-20" fxFlex.gt-xs="50" fxFlex="100">
+                    <md-card class="card-widget" fxLayout="row" fxLayoutAlign="start center">
+                        <div class="at-p-20">
+                            <at-icon backgroundColor="blue"
+                                     backgroundType="border" size="60px" fontSize="30px">
+                    access_time
+                            </at-icon>
+                        </div>
+                        <div>
+                            <!-- <h5 class="mat-display-2 at-mb-100 at-tw-30 mat-fg-grey-800">Last Login </h5> -->
+
+                            <label class="mat-fg-black-600" style= "font-size: 20px;">Sun , 3:37 pm 14/01/17</label>
+                            <br>
+                            <label class="mat-fg-grey-600">Login Last</label>
+
+                        </div>
+                    </md-card>
+                </div>
+                
             </div>
+           
         </section>
 
-        <!-- <section fxLayout="row" fxLayoutWrap class="at-mt-20">
-            <div fxFlex="100" fxLayout="column" fxFlex.gt-md="50" class="at-ph-10">
-                <md-card class="card-widget at-hp-100">
-                    <md-card-title class="at-tz-xl"> Incoming deals</md-card-title>
-                    <md-card-content>
-                        <div fxLayoutAlign="start center" class="at-ph-15 at-mt-10">
-                            <div fxFlex fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-deep-purple at-mr-10">lens</md-icon>
-                                <label>Unknown</label>
-                            </div>
-                            <div fxFlex fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-blue-600 at-mr-10">lens</md-icon>
-                                <label>Website</label>
-                            </div>
-                            <div fxFlex fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-light-green-600 at-mr-10">lens</md-icon>
-                                <label>Ads</label>
-                            </div>
-                            <div fxFlex fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-amber at-mr-10">lens</md-icon>
-                                <label>Referrals</label>
-                            </div>
-                        </div>
-                        <div class="at-h-10"></div>
-                        <div class="at-h-400">
-                            <ngx-charts-bar-vertical-2d
-                                    [scheme]="dashboardData.incomingDeals.colorSchema"
-                                    [results]="dashboardData.incomingDeals.data"
-                                    [gradient]="dashboardData.incomingDeals.options.gradient"
-                                    [xAxis]="dashboardData.incomingDeals.options.showXAxis"
-                                    [yAxis]="dashboardData.incomingDeals.options.showYAxis"
-                                    [legend]="dashboardData.incomingDeals.options.showLegend"
-                                    [showXAxisLabel]="dashboardData.incomingDeals.options.showXAxisLabel"
-                                    [xAxisLabel]="dashboardData.incomingDeals.options.xAxisLabel"
-                                    [barPadding]="2"
-                                    [groupPadding]="8">
-                            </ngx-charts-bar-vertical-2d>
-                        </div>
+       
 
-                    </md-card-content>
-                </md-card>
-            </div>
+        
 
-            <div fxFlex="100" fxFlex.gt-md="50" fxLayout="column" ngClass="at-mt-20" ngClass.gt-md="at-mt-0"
-                 class="at-ph-10">
-                <md-card class="card-widget" ngClass.gt-md="at-hp-100">
-                    <md-card-title class="at-tz-xl">Deals Lost by reasons</md-card-title>
-                    <md-card-content class="at-hp-90" fxLayout="column" fxLayout.gt-xs="row"
-                                     fxLayoutAlign.gt-xs="start stretch">
-                        <div fxFlex="100" fxFlex.gt-md="60" fxLayout="row" fxLayoutAlign="center center">
-                            <ngx-charts-gauge
-                                    [view]="['300','300']"
-                                    [scheme]="dashboardData.dealsLostByReason.colorSchema"
-                                    [results]="dashboardData.dealsLostByReason.data"
-                                    [min]="0"
-                                    [max]="341"
-                                    [angleSpan]="360"
-                                    [startAngle]="0"
-                                    [showAxis]="false"
-                                    [units]="'Deals'">
-                            </ngx-charts-gauge>
-                        </div>
-
-                        <div fxFlex="100" fxFlex.gt-md="40" fxLayout="row" fxLayout.gt-xs="column"
-                             fxLayoutAlign="center start">
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-red-100 at-mr-10">lens</md-icon>
-                                <label>40% Opened - 64</label>
-                            </div>
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-red-300 at-mr-10">lens</md-icon>
-                                <label>20% First Contact - 122</label>
-                            </div>
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-red-500 at-mr-10">lens</md-icon>
-                                <label>20% Open - 122</label>
-                            </div>
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-red-700 at-mr-10">lens</md-icon>
-                                <label>20% Lost - 33</label>
-                            </div>
-                        </div>
-
-                    </md-card-content>
-                </md-card>
-            </div>
-        </section> -->
-
-        <section fxLayout="column" class="at-mt-20">
-            <div class="at-ph-10">
-                <md-card fxFlex class="card-widget">
-                    <md-card-content fxLayout="row" fxLayoutWrap>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-light-blue-500 at-mb-5">21,200</h2>
-                            <label>Emails Sent</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-orange-500 at-mb-5">871</h2>
-                            <label>Skipped</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-lime-500 at-mb-5">1204</h2>
-                            <label>Opened</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-blue-grey-500 at-mb-5">871</h2>
-                            <label>Clicked</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-teal-500 at-mb-5">102</h2>
-                            <label>Hard Bounced</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-purple-500 at-mb-5">42</h2>
-                            <label>Soft Bounced</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-red-500 at-mb-5">102</h2>
-                            <label>Unsubscribed</label>
-                        </div>
-                        <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
-                             fxLayoutAlign="center center">
-                            <h2 class="mat-display-2 mat-fg-red-700 at-mb-5">42</h2>
-                            <label>Spam</label>
-                        </div>
-                    </md-card-content>
-                </md-card>
-            </div>
-        </section>
-
-        <!-- <section fxLayout="row" fxLayoutWrap class="at-mt-20">
-            <div fxFlex="100" fxLayout="column" fxFlex.gt-md="50" class="at-ph-10">
-                <md-card fxFlex class="card-widget at-hp-100">
-                    <md-card-title class="at-tz-xl">Referral URL</md-card-title>
-                    <md-card-content fxLayout="column">
-                        <div *ngFor="let url of dashboardData.referralUrl.data" fxLayout="column"
-                             class="at-mb-20">
-                            <div fxLayout="row">
-                                <label>{{url.name}}</label>
-                                <span fxFlex></span>
-                                <strong>{{url.value.toFixed()}}</strong>
-                            </div>
-                            <md-progress-bar
-                                    class="at-mt-10 at-mb-5"
-                                    color="primary"
-                                    mode="determinate"
-                                    [value]="url.value / dashboardData.referralUrl.data[0].value * 100">
-                            </md-progress-bar>
-                        </div>
-                    </md-card-content>
-                </md-card>
-            </div>
-
-            <div fxFlex="100" fxFlex.gt-md="50" fxLayout="column" ngClass="at-mt-20" ngClass.gt-md="at-mt-0"
-                 class="at-ph-10">
-                <md-card class="card-widget" ngClass.gt-md="at-hp-100">
-                    <md-card-title class="at-tz-xl">Campaigns</md-card-title>
-                    <md-card-content class="at-hp-90" fxLayout="column" fxLayout.gt-xs="row"
-                                     fxLayoutAlign.gt-xs="start stretch">
-                        <div fxFlex="100" fxFlex.gt-md="60" fxLayout="row" fxLayoutAlign="center center">
-                            <ngx-charts-gauge
-                                    [view]="['300','300']"
-                                    [scheme]="dashboardData.campaigns.colorSchema"
-                                    [results]="dashboardData.campaigns.data"
-                                    [min]="0"
-                                    [max]="16"
-                                    [angleSpan]="360"
-                                    [startAngle]="0"
-                                    [showAxis]="false"
-                                    [units]="'Campaigns'">
-                            </ngx-charts-gauge>
-                        </div>
-                        <div fxFlex="100" fxFlex.gt-md="40" fxLayout="row" fxLayout.gt-xs="column"
-                             fxLayoutAlign="center start">
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-green at-mr-10">lens</md-icon>
-                                <label>68% Completed</label>
-                            </div>
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-light-blue-400 at-mr-10">lens</md-icon>
-                                <label>20% Active</label>
-                            </div>
-                            <div class="at-mb-10" fxLayoutAlign="start center">
-                                <md-icon class="mat-fg-red-400 at-mr-10">lens</md-icon>
-                                <label>12% Removed</label>
-                            </div>
-                        </div>
-
-                    </md-card-content>
-                </md-card>
-            </div>
-        </section> -->
 
         <section fxLayout="row" fxLayoutWrap class="at-mt-20">
             <div fxFlex="100" fxFlex.gt-md="50" class="at-ph-10">

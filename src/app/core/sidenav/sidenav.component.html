@@ -37,9 +37,9 @@
                      src="assets/img/at-primary-light-icon.svg">
                 <img *ngIf="activeSettings.theme.className == 'at-theme-dark'" class="at-wp-80"
                      src="assets/img/at-primary-dark-icon.svg">
-                <h2 class="at-sidenav-fade-in-on-hover at-m-0 mat-fg-grey-700 mat-display-1"
+                <!-- <h2 class="at-sidenav-fade-in-on-hover at-m-0 mat-fg-grey-700 mat-display-1"
                     [class.mat-fg-grey-700]="activeSettings.theme.className == 'at-theme-light'"
-                    [class.mat-fg-white]="activeSettings.theme.className == 'at-theme-dark'">atomic</h2>
+                    [class.mat-fg-white]="activeSettings.theme.className == 'at-theme-dark'">atomic</h2> -->
                 <!--<img class="at-sidenav-fade-in-on-hover" style="margin-top: -20px" src="assets/img/aviator-text.png">-->
             </div>
         </ng-container>
@@ -66,15 +66,15 @@
                 [color]="activeSettings.sidenav.footerToolbarColor == 'at-toolbar-primary' ? 'primary': ''"
                 class="at-sidenav-footer at-toolbar {{activeSettings.sidenav.footerToolbarColor}}">
         <div fxFlex fxLayout="row" fxLayoutAlign="start center">
-            <h4 class="at-mb-0 at-sidenav-fade-in-on-hover" fxFlex>Sidebar Footer</h4>
+            <!-- <h4 class="at-mb-0 at-sidenav-fade-in-on-hover" fxFlex>Sidebar Footer</h4> -->
             <span fxFlex><!-- fill space --></span>
-            <div fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
+            <!-- <div fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
                 <button *ngIf="activeSettings.sidenav.footerPin" md-icon-button (click)="toggleSidenavCollapsed()">
                     <md-icon class="icon-sidenav-toggle"
                              [class.rotate]="isSidenavCollapsed()">chevron_left
                     </md-icon>
                 </button>
-            </div>
+            </div> -->
         </div>
     </md-toolbar>
 

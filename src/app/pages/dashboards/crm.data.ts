@@ -8,7 +8,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 export let dashboardData: any = {
     emailsSent: [{
         'name': 'Opened',
-        'value': 70,
+        'value': 75,
     }],
     incomingDeals: {
         options: {

@@ -24,11 +24,14 @@ import {CalendarModule} from 'angular-calendar';
 import {CoreModule} from './core/core.module';
 //import { CookieModule, CookieService } from 'ngx-cookie';
 import { CookieService } from 'ngx-cookie-service';
+// import { EnrollmentcardComponent } from './enrollmentcard/enrollmentcard.component';
+// import { LibrarycardComponent } from './librarycard/librarycard.component';
+//import { IdcardComponent } from './idcard/idcard.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent    
     
     ],
     imports: [
