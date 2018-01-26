@@ -35,6 +35,12 @@
       "email": "mobaid56@gmail.com",
       "password": " ",
       "id": 6
+    },
+    {
+      "name": "khan",
+      "email": "khan@abc.com",
+      "password": "753",
+      "id": 7
     }
   ]
 }

@@ -40,15 +40,23 @@
     background-color: #292929 !important;
   }
 
+.heading{
+
+  margin-left: 5%;
+}
+
   .user-button-container {
     height: 100%;
     font-weight: 400;
-    margin-left: 1210px;
+   // margin-left: 1210px;
+   
 
     .user-button {
       height: 100%;
       border-radius: 0;
-      //margin-left: 1210px;
+    // margin-left: 1150% !important ;
+    position: relative;
+   left: 1050px;
 
       md-icon {
         font-size: 16px;
