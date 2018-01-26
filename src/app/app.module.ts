@@ -13,6 +13,7 @@ import {RoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {DashboardsModule} from './pages/dashboards/dashboards.module';
 import {AppsModule} from './pages/apps/apps.module';
+import { AppService } from './app.service';
 //import {ComponentsModule} from './pages/components/components.module';
 import {AtomicLayoutsModule} from './pages/atomic-layouts/atomic-layouts.module';
 import {UiModule} from './pages/ui/ui.module';
@@ -56,11 +57,11 @@ import { CookieService } from 'ngx-cookie-service';
         HttpClientModule
     ],
     exports: [],
-    providers: [AuthGuard, AuthService, CookieService ],
+    providers: [AuthGuard, AuthService, CookieService,AppService ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor( public auth :  AuthService ){
+    constructor(public appState: AppService, public auth :  AuthService ){
 
     }
 }
