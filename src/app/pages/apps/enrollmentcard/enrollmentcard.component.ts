@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component , Input , ViewChild,ElementRef,TemplateRef } from '@angular/core';
+import { AppService } from '~/./../app/app.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-enrollmentcard',
   templateUrl: './enrollmentcard.component.html',
   styleUrls: ['./enrollmentcard.component.scss']
 })
-export class EnrollmentcardComponent implements OnInit {
+export class EnrollmentcardComponent  { 
 
-  constructor() { }
+ constructor(private exampleService: AppService) { }
 
-  ngOnInit() {
-  }
+
+
+  onSubmit(){
+    
+
+    this.exampleService.publicblockchain('This is text')
+  	.subscribe(data => {
+  	           console.log('Service'); 
+                    
+  		}
+  		); 
+  	
+
+  };
+
 
 }
