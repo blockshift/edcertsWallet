@@ -20,7 +20,8 @@ import {APPS_COMPONENTS, AppsRoutingModule} from './apps-routing.module';
         AtPagingModule,
         AtScrollbarModule,
         AtSearchModule,
-        AppsRoutingModule
+        AppsRoutingModule,
+
     ],
     declarations: [
         APPS_COMPONENTS,

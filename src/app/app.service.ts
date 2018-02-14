@@ -20,9 +20,6 @@ console.log("This is text",text);
 
 
 
-
-
-
      let headers = new Headers({'Content-Type': 'application/json'});
      let options = new RequestOptions({ headers: headers });
      
@@ -37,6 +34,35 @@ console.log("This is text",text);
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
 };
+
+fetchbyenrollment(enrollmentid){
+    
+console.log("server logs",enrollmentid);
+let headers = new Headers({'cache-control':'no-cache', 'Content-Type': 'application/json', 'authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTg1NTYxMzYsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Im9yZ2EiLCJpYXQiOjE1MTg1MjAxMzZ9.ruedni7yo5Zgt1FY9X8ciI0Ch_qDWYboJwIWsPQVCkQ'});
+       let options = new RequestOptions({ headers: headers });
+        
+
+     return this.http.get('http://ec2-34-237-218-240.compute-1.amazonaws.com:4000/channels/firstchannel/chaincodes/firstchaincode/?peer=peer1st-orga.orga&fcn=readDegree&args=%5B%22'+enrollmentid+'%22%5D', options )
+
+    .map((res: Response) => res)
+    .catch(e => {
+            if (e.status === 401) {
+                console.log("It works");
+                return Observable.throw('Unauthorized');
+            }
+             console.log("It works");
+            // do any other checking for statuses here
+        });
+
+
+};
+
+
+getdata(){
+  
+return('Obaid is here');
+
+}
 
 
 

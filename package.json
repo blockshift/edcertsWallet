@@ -49,6 +49,7 @@
     "rxjs": "5.5.2",
     "smooth-scrollbar": "8.2.0",
     "sortablejs": "^1.6.0",
+    "stampery": "^6.0.2",
     "web-animations-js": "^2.3.1",
     "zone.js": "0.8.16"
   },

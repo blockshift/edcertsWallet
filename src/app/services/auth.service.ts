@@ -16,19 +16,21 @@ export class AuthService {
 
 
   setUserLoggedIn (user){
-this._cookieService.set("user", user);
+
+this._cookieService.set("enrollmentnumber",user);
+console.log(this._cookieService.get("enrollmentnumber"));
   this.isUserloggedIn = true ;
 }  
 
 //token removing
 setUserLoggedOut(){
   this.isUserloggedIn = false;
-  this._cookieService.delete("user");
+  this._cookieService.delete("enrollmentnumber");
 }
 //checking the user login or not
 getUserLoggedIn () {
-  console.log(this._cookieService.get("user"));
-  return (this._cookieService.get("user")!="" && this._cookieService.get("user")!=undefined);
+  console.log(this._cookieService.get("enrollmentnumber"));
+  return (this._cookieService.get("enrollmentnumber")!="" && this._cookieService.get("enrollmentnumber")!=undefined);
 //return this.isUserloggedIn ;
 }
 

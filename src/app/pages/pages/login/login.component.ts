@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
 
-    @Input() email : any ;
+    @Input() username : any ;
     @Input() pass : any ;
     @Input() form : any   ;
 
@@ -43,26 +43,14 @@ export class LoginComponent {
 
     };
 
-// login (){
-
-//       if (this.username == "juni" && this.pass == 123 ){
-//           this.router.navigate(['dashboard']);
-//           this.auth.setUserLoggedIn();
-//           console.log("success");
-//       }
-//        else
-//            console.log('login fail');
-      
-      
-//       }
 
 
       
    login (){
 
-    console.log("naam hai",this.email);
+    console.log("naam hai",this.username);
     console.log();
-    this.http.get('http://localhost:3000/login/?email=' + this.email)
+    this.http.get('http://localhost:3000/login/?name=' + this.username)
   
     .subscribe(
       
@@ -71,6 +59,7 @@ export class LoginComponent {
 console.log("password ye hai",this.pass);
        if(this.pass==data[0].password){
        console.log("successfully login");
+       
        this.auth.setUserLoggedIn(data[0].name);
    this.router.navigate(['dashboard']); 
   }

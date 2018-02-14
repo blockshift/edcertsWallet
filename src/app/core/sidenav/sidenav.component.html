@@ -48,10 +48,10 @@
                 <div fxFlex>
                     <img class="at-ml-20 at-mt-40 at-mb-15" src="https://randomuser.me/api/portraits/med/women/40.jpg">
                 </div>
-                <md-select class="at-pl-20 at-pr-20 at-mb-40">
+                <!-- <md-select class="at-pl-20 at-pr-20 at-mb-40">
                     <md-option value="1">Wilma Arndt</md-option>
                     <md-option value="2">Jhon Doe</md-option>
-                </md-select>
+                </md-select> -->
             </div>
         </ng-container>
     </ng-container>
@@ -68,13 +68,13 @@
         <div fxFlex fxLayout="row" fxLayoutAlign="start center">
             <!-- <h4 class="at-mb-0 at-sidenav-fade-in-on-hover" fxFlex>Sidebar Footer</h4> -->
             <span fxFlex><!-- fill space --></span>
-            <!-- <div fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
+            <div fxHide="true" fxHide.gt-sm="false" fxFlexAlign="center">
                 <button *ngIf="activeSettings.sidenav.footerPin" md-icon-button (click)="toggleSidenavCollapsed()">
                     <md-icon class="icon-sidenav-toggle"
-                             [class.rotate]="isSidenavCollapsed()">chevron_left
+                             [class.rotate]="isSidenavCollapsed()">chevron_right
                     </md-icon>
                 </button>
-            </div> -->
+            </div>
         </div>
     </md-toolbar>
 

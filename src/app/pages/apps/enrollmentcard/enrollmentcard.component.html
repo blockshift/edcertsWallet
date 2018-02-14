@@ -1,42 +1,47 @@
-
 <at-layout [layoutType]="'simple'"
 scrollOn="container">
 
-<div at-layout-header [height]="100">
+<div at-layout-header [height]="50">
  <div class="at-padding-horizontal-40">
      <h1 class="at-mb-5" fxLayout="row" fxLayoutAlign="start space-around"></h1>
    <h4 class="at-mb-5">Enrollment ID</h4>
 </div>
 </div>
 
-<div at-layout-content [ngClass.gt-sm]="'at-p-33'" class="at-hp-120">
-
-<div class="at-ph-8">
+<div at-layout-content [ngClass.gt-sm]="'at-p-40'" class="at-hp-100">
+    <section fxLayout="column" class="at-mt-20">
+<div class="at-ph-12">
    <md-card fxFlex class="card-widget">
        <md-card-content fxLayout="row" fxLayoutWrap>
-           <div class="at-p-15" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
+           <div class="at-ph-3" fxFlex="50" fxFlex.gt-xs="33" fxFlex.gt-sm="25" fxLayout="column"
                 fxLayoutAlign="center center">
-                <!-- <label>Student Card Id</label> -->
-               <h3 >ebubjcndior5n33kmk3k2mkm23kn35n21qwplm</h3>
                
+             <h3>Batch</h3> 
+             <h3>Enrollment holder </h3>
+             <h3>department</h3>
+             <h3>Enrollment Number</h3>
+             <h3>Expiry</h3>
+             <h3>Student Father Name</h3>
+             <h3>Student Resedential Address</h3>  
+
            </div>
-          
+           <div class="at-ph-9" >
+        <h4>  <div   #dataContainer></div></h4>
+        <h4>  <div   #dataContainer2></div></h4>
+        <h4>  <div   #dataContainer3></div></h4>
+        <h4>  <div   #dataContainer4></div></h4>
+        <h4>  <div   #dataContainer5></div></h4>
+        <h4>  <div   #dataContainer6></div></h4>
+        <h4>  <div   #dataContainer7></div></h4>
+      </div>
        </md-card-content>
+       <div class="row" fxLayoutAlign="end center">
+        <div  class="at-ph-12">
+            <button md-raised-button color="primary"  (click)="onSubmit(obaid)">Post into Bitcoin Blockchain</button>
+        </div>
+        </div>
    </md-card>
 </div>
-
-
-<div class="row">
-<div  class="at-ph-12">
-                <button md-raised-button color="primary"  (click)="onSubmit(obaid)">Post into Bitcoin Blockchain</button>
+</section>
 </div>
-
-
-</div>
-
-</div>
-
- 
-     
-
 </at-layout>
