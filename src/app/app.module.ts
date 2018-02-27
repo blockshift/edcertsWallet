@@ -29,6 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
 // import { LibrarycardComponent } from './librarycard/librarycard.component';
 //import { IdcardComponent } from './idcard/idcard.component';
 
+import { AtFormModule } from '@atomic/core';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { CookieService } from 'ngx-cookie-service';
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        AtFormModule,
         HttpModule,
         RoutingModule,
         CalendarModule.forRoot(),
@@ -54,7 +56,8 @@ import { CookieService } from 'ngx-cookie-service';
         //TablesModule,
         PagesModule,
        // CookieModule.forRoot(),
-        HttpClientModule
+        HttpClientModule,
+
     ],
     exports: [],
     providers: [AuthGuard, AuthService, CookieService,AppService ],

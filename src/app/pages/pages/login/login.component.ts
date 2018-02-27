@@ -50,7 +50,7 @@ export class LoginComponent {
 
     console.log("naam hai",this.username);
     console.log();
-    this.http.get('http://localhost:3000/login/?name=' + this.username)
+    this.http.get('http://ec2-34-238-27-58.compute-1.amazonaws.com:3000/login/?name=' + this.username)
   
     .subscribe(
       

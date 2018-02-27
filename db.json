@@ -44,7 +44,7 @@
     },
     {
       "id": 8,
-      "name": "ned20",
+      "name": "ned88",
       "email": "mobaid56@gmail.com",
       "password": "123"
     },
@@ -53,6 +53,18 @@
       "email": "khurram@gmail.com",
       "password": "khurram",
       "id": 9
+    },
+    {
+      "name": "ned71",
+      "email": "syedatif@gmail.com",
+      "password": "atif",
+      "id": 10
+    },
+    {
+      "name": "pss",
+      "email": "pss@gmail.com",
+      "password": "123",
+      "id": 11
     }
   ]
 }

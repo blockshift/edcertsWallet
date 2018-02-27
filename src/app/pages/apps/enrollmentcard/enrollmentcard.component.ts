@@ -34,7 +34,7 @@ this.exampleService.fetchbyenrollment(finalcookievalue[1])
                     this.dataContainer.nativeElement.innerHTML = jsonstring["batch"];
                     this.dataContainer2.nativeElement.innerHTML = jsonstring["degreeholder"];
                     this.dataContainer3.nativeElement.innerHTML = jsonstring["department"];
-                    this.dataContainer4.nativeElement.innerHTML = jsonstring["enrollment"];
+                    this.dataContainer4.nativeElement.innerHTML = jsonstring["enrolment"];
                     this.dataContainer5.nativeElement.innerHTML = jsonstring["expiry"];
                     this.dataContainer6.nativeElement.innerHTML = jsonstring["studentfathername"];
                     this.dataContainer7.nativeElement.innerHTML = jsonstring["studentresidentialaddresss"];

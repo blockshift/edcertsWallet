@@ -5,6 +5,7 @@ import {MailComponent} from './mail/mail.component';
 import { IdcardComponent } from 'app/pages/apps/idcard/idcard.component';
 import { EnrollmentcardComponent } from 'app/pages/apps/enrollmentcard/enrollmentcard.component';
 import { LibrarycardComponent } from 'app/pages/apps/librarycard/librarycard.component';
+import { EnrollmentcardverificationComponent } from 'app/pages/apps/enrollmentcardverification/enrollmentcardverification.component'
 
 export const APPS_ROUTES: Routes = [
     {
@@ -56,31 +57,24 @@ path : 'apps/librarycard' ,
         }
 
 }
-}    
-    // {
-    //     path: 'apps/calendar',
-    //     component: CalendarComponent,
-    //     data: {
-    //         atSidenavItem: {
-    //             name: 'Calendar',
-    //             icon: 'event',
-    //             position: 1,
-    //             customClass: '',
-    //         }
-    //     }
-    // },
-    // {
-    //     path: 'apps/mail',
-    //     component: MailComponent,
-    //     data: {
-    //         atSidenavItem: {
-    //             name: 'Mail',
-    //             icon: 'mail',
-    //             position: 1,
-    //             customClass: '',
-    //         }
-    //     },
-    // },
+},
+
+{
+    path : 'apps/enrollmentcardverification' ,
+    component : EnrollmentcardverificationComponent,
+    data :{
+
+        atSidenavItem: {
+            name: 'Validate Enrollment Card',
+            icon: 'event',
+            position: 1,
+            customClass: '',
+        }
+
+
+},
+}
+    
 ];
 
 export const APPS_COMPONENTS = [
@@ -88,7 +82,8 @@ export const APPS_COMPONENTS = [
     MailComponent,
     IdcardComponent,
     LibrarycardComponent,
-    EnrollmentcardComponent
+    EnrollmentcardComponent,
+    EnrollmentcardverificationComponent
 ];
 
 @NgModule({

@@ -33,15 +33,7 @@ loading = false ;
     }
 
 
-    // onSubmit(form : any) : void {
-    //     console.log("username ", form.name );
-      
-    //   console.log("Password" ,form.password);
-    //   console.log("Confirm Password" ,form.confirmpass);
-    //   console.log("eMAIL" ,form.email);
-    //   console.log (form);
-    
-    // };
+   
     
 
 register(){

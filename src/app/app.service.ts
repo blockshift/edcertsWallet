@@ -38,11 +38,11 @@ console.log("This is text",text);
 fetchbyenrollment(enrollmentid){
     
 console.log("server logs",enrollmentid);
-let headers = new Headers({'cache-control':'no-cache', 'Content-Type': 'application/json', 'authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTg1NTYxMzYsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Im9yZ2EiLCJpYXQiOjE1MTg1MjAxMzZ9.ruedni7yo5Zgt1FY9X8ciI0Ch_qDWYboJwIWsPQVCkQ'});
+let headers = new Headers({'cache-control':'no-cache', 'Content-Type': 'application/json', 'authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk2NjI0NDcsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Im9yZ2EiLCJpYXQiOjE1MTk2MjY0NDd9.meztt2gu9atjURj3KF55PwehofXKaKohI1DkJc2fPHk'});
        let options = new RequestOptions({ headers: headers });
         
 
-     return this.http.get('http://ec2-34-237-218-240.compute-1.amazonaws.com:4000/channels/firstchannel/chaincodes/firstchaincode/?peer=peer1st-orga.orga&fcn=readDegree&args=%5B%22'+enrollmentid+'%22%5D', options )
+     return this.http.get('http://ec2-35-171-228-220.compute-1.amazonaws.com:4000/channels/firstchannel/chaincodes/firstchaincode/?peer=peer1st-orga.orga&fcn=readDegree&args=%5B%22'+enrollmentid+'%22%5D', options )
 
     .map((res: Response) => res)
     .catch(e => {
